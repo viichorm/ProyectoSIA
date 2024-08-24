@@ -1,2 +1,0 @@
-1|Club A|Dirección A|miembro1,miembro2,miembro3
-2|Club B|Dirección B|miembro4,miembro5

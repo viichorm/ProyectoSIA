@@ -4,7 +4,7 @@ public class clubesDeportivos {
     private String direccion; //direccion donde se encuentra el club
     private int idClub; //identificador del club
     private ArrayList<actividadesClubes> actividades; //actividades cuales tiene el club
-    private ArrayList<String> miembros; //miembros que pertenecen al club
+    private ArrayList<String> Socios; //Socios a quienes les pertenecen el club
 
     // getters
 
@@ -12,7 +12,7 @@ public class clubesDeportivos {
     public String getDireccion(){return direccion;}
     public int getidClub(){return idClub;}
     public ArrayList<actividadesClubes> getActividades(){return actividades;}
-    public ArrayList<String> getMiembros(){return miembros;}
+    public ArrayList<String> getSocios(){return Socios;}
 
     //setters
 
@@ -20,7 +20,7 @@ public class clubesDeportivos {
     public void setDireccion(String direccion){this.direccion = direccion;}
     public void setID(int id){this.idClub = id;}
     public void setActividades(ArrayList<actividadesClubes> actividades) {this.actividades = actividades;}
-    public void setMiembros(ArrayList<String> miembros){this.miembros = miembros;}
+    public void setSocios(ArrayList<String> Socios){this.Socios = Socios;}
 
 
 

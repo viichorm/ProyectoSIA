@@ -23,10 +23,10 @@ public class cargarArchivo {
             club.setNombre(nombre);
             club.setDireccion(direccion);
             club.setActividades(new ArrayList<actividadesClubes>());
-            club.setMiembros(new ArrayList<String>());
+            club.setSocios(new ArrayList<String>());
 
             for (String miembro : miembrosArray) {
-                club.getMiembros().add(miembro);
+                club.getSocios().add(miembro);
             }
 
             clubesMap.put(idClub, club);

@@ -5,23 +5,28 @@ public class mainProyecto {
     public static void main(String[] args) {
         try {
             // Cargar clubes desde el archivo "Clubes.txt"
-            HashMap<Integer, clubesDeportivos> clubes = cargarArchivo.cargarClubes("Clubes.txt");
+            HashMap<Integer, clubesDeportivos> clubes = cargarArchivo.cargarClubes("ArchivosTxt/Clubes.txt");
 
             // Cargar actividades y asociarlas a los clubes desde el archivo "Actividades.txt"
-            cargarArchivo.cargarActividades("ActividadesClubes.txt", clubes);
+            cargarArchivo.cargarActividades("ArchivosTxt/ActividadesClubes.txt", clubes);
 
-            // Aquí puedes agregar más lógica para interactuar con los clubes y actividades cargados
-            // Por ejemplo, podrías imprimir la información de los clubes
+            //Aqui falta aun implementacion del menu....
             for (Integer id : clubes.keySet()) {
                 clubesDeportivos club = clubes.get(id);
-                System.out.println("Club ID: " + club.getidClub());
+                System.out.println("\nClub ID: " + club.getidClub());
                 System.out.println("Nombre: " + club.getNombre());
                 System.out.println("Dirección: " + club.getDireccion());
                 System.out.println("Actividades:");
+
+                if (club.getActividades().isEmpty()) {
+                    System.out.println("  - No hay actividades");
+                }
+
                 for (actividadesClubes actividad : club.getActividades()) {
+
                     System.out.println("  - " + actividad.getActividad() + " en " + actividad.getLugar() + " a las " + actividad.getHorario());
                 }
-                System.out.println("Miembros: " + club.getMiembros());
+                System.out.println("\nSocios: " + club.getSocios());
                 System.out.println();
             }
 
