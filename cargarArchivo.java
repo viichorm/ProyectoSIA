@@ -1,8 +1,7 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.io.*;
+import java.util.*;
+
+
 
 public class cargarArchivo {
 
@@ -16,6 +15,8 @@ public class cargarArchivo {
             int idClub = Integer.parseInt(datos[0]);
             String nombre = datos[1];
             String direccion = datos[2];
+            String miembrosString = datos[3];
+            String[] miembrosArray = miembrosString.split(",");
 
             clubesDeportivos club = new clubesDeportivos();
             club.setID(idClub);
@@ -23,6 +24,10 @@ public class cargarArchivo {
             club.setDireccion(direccion);
             club.setActividades(new ArrayList<actividadesClubes>());
             club.setMiembros(new ArrayList<String>());
+
+            for (String miembro : miembrosArray) {
+                club.getMiembros().add(miembro);
+            }
 
             clubesMap.put(idClub, club);
         }
