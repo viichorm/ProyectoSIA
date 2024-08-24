@@ -1,0 +1,2 @@
+1|Club A|Dirección A
+2|Club B|Dirección B
