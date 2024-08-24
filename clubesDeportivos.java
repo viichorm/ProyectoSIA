@@ -21,7 +21,5 @@ public class clubesDeportivos {
     public void setID(int id){this.idClub = id;}
     public void setActividades(ArrayList<actividadesClubes> actividades) {this.actividades = actividades;}
     public void setSocios(ArrayList<String> Socios){this.Socios = Socios;}
-
-
-
+    
 }
