@@ -8,7 +8,7 @@ public class mainProyecto {
             HashMap<Integer, clubesDeportivos> clubes = cargarArchivo.cargarClubes("Clubes.txt");
 
             // Cargar actividades y asociarlas a los clubes desde el archivo "Actividades.txt"
-            cargarArchivo.cargarActividades("Actividades.txt", clubes);
+            cargarArchivo.cargarActividades("ActividadesClubes.txt", clubes);
 
             // Aquí puedes agregar más lógica para interactuar con los clubes y actividades cargados
             // Por ejemplo, podrías imprimir la información de los clubes
