@@ -19,7 +19,7 @@ public class cargarArchivo {
             String[] miembrosArray = miembrosString.split(",");
 
             clubesDeportivos club = new clubesDeportivos();
-            club.setID(idClub);
+            club.setId(idClub);
             club.setNombre(nombre);
             club.setDireccion(direccion);
             club.setActividades(new ArrayList<actividadesClubes>());

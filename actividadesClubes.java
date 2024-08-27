@@ -94,7 +94,7 @@ public class actividadesClubes{
     {
         if(validar && id <= 0)
         {
-            throw new IllegalArgumentException("El ID de la actividad debe ser positivo.")
+            throw new IllegalArgumentException("El ID de la actividad debe ser positivo.");
         }
         this.idActividad = id;
     }
@@ -115,7 +115,7 @@ public class actividadesClubes{
     public void setLugar(String lugar, int sala)
     {
         if(sala <= 0){
-            throw new IllegalArgumentException("El número de la sala debe ser positivo")
+            throw new IllegalArgumentException("El número de la sala debe ser positivo");
         }
         this.lugar = lugar + " - Sala número" + sala;
     }
