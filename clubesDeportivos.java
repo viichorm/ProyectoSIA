@@ -69,7 +69,7 @@ public class clubesDeportivos{
     {
         if(validar && id <= 0)
         {
-            throw new IllegalArgumentException("El ID del club debe ser positivo.") 
+            throw new IllegalArgumentException("El ID del club debe ser positivo.");
         }
         this.idClub = id;
     }
