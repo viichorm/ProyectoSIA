@@ -1,3 +1,5 @@
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.*;
 public class clubesDeportivos{
     private int idClub; //identificador del club
@@ -114,42 +116,63 @@ public class clubesDeportivos{
 
     //Metodos para la gestión de clubes.
 
-    //Función para agregar un club. 
-    public static void agregarClub(HashMap<Integer, clubesDeportivos> clubes, clubesDeportivos club)
-    {
-        if(club != null && !clubes.containsKey(club.getidClub()))
-        {
-            clubes.put(club.getidClub(), club);
-            System.out.println("Club agregado exitosamente.");
-        }
-        else{
-            System.out.println("No se pudo agregar el club, puede que este ya exista en el sistema.");
-        }
+    public static void agregarClub(HashMap<Integer, clubesDeportivos> clubes, BufferedReader buffer) throws IOException {
+        System.out.println("Agregar nuevo club:");
+        System.out.print("Ingrese el nombre del club: ");
+        String nombre = buffer.readLine();
+        System.out.print("Ingrese la dirección del club: ");
+        String direccion = buffer.readLine();
+        System.out.print("Ingrese el ID del club: ");
+        int idClub = Integer.parseInt(buffer.readLine());
+
+        clubesDeportivos nuevoClub = new clubesDeportivos();
+        nuevoClub.setNombre(nombre);
+        nuevoClub.setDireccion(direccion);
+        nuevoClub.setId(idClub);
+        nuevoClub.setActividades(new ArrayList<>());
+        nuevoClub.setSocios(new ArrayList<>());
+
+        clubes.put(idClub, nuevoClub);
+        System.out.println("Club agregado exitosamente.");
     }
-    
-    //Funcion para actualizar los datos de un club.
-    public static void editarClub(HashMap<Integer, clubesDeportivos> clubes, clubesDeportivos clubEdit, int idClub)
-    {
-        if(clubes.containsKey(idClub))
-        {
-            clubes.put(idClub, clubEdit);
-            System.out.println("Datos del club editados correctamente.");
-        }
-        else{
-            System.out.println("No se pudo editar el club. No existe un club con ese ID en el sistema.");
+
+    public static void editarClub(HashMap<Integer, clubesDeportivos> clubes, BufferedReader buffer) throws IOException {
+        System.out.print("Ingrese el ID del club a editar: ");
+        int idClub = Integer.parseInt(buffer.readLine());
+
+        if (clubes.containsKey(idClub)) {
+            clubesDeportivos club = clubes.get(idClub);
+
+            System.out.print("Ingrese el nuevo nombre del club (actual: " + club.getNombre() + "): ");
+            String nuevoNombre = buffer.readLine();
+            if (!nuevoNombre.isEmpty()) {
+                club.setNombre(nuevoNombre);
+            }
+
+            System.out.print("Ingrese la nueva dirección del club (actual: " + club.getDireccion() + "): ");
+            String nuevaDireccion = buffer.readLine();
+            if (!nuevaDireccion.isEmpty()) {
+                club.setDireccion(nuevaDireccion);
+            }
+
+            System.out.println("Club editado exitosamente.");
+        } else {
+            System.out.println("El club con ID " + idClub + " no existe.");
         }
     }
 
-    //Funcion para eliminar un club.
-    public static void eliminarClub(HashMap<Integer, clubesDeportivos> clubes, int idClub)
-    {
-        if(clubes.containsKey(idClub))
-        {
+    public static void eliminarClub(HashMap<Integer, clubesDeportivos> clubes, BufferedReader buffer) throws IOException {
+        System.out.print("Ingrese el ID del club a eliminar: ");
+        int idClub = Integer.parseInt(buffer.readLine());
+
+        if (clubes.containsKey(idClub)) {
             clubes.remove(idClub);
             System.out.println("Club eliminado exitosamente.");
+        } else {
+            System.out.println("El club con ID " + idClub + " no existe.");
         }
-        else{
-            System.out.println("No se puedo eliminar el club. No se encontro el club con ese ID en el sistema.");
-        }
+        
+
     }
 }
+

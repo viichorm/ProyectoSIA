@@ -12,4 +12,4 @@
 124160011|Club Deportivo Quilicura|Av. Lo Cruzat 2000, Quilicura, Santiago|Ignacio Soto,Natalia Díaz
 135270012|Club Deportivo Ñuñoa|Av. Irarrázaval 1800, Ñuñoa, Santiago|Javier Ramírez,Mónica Fuentes
 146380013|Club Deportivo Rancagua|Av. República 300, Rancagua, O'Higgins|Diego Figueroa,Ana Vargas
-157490014|Club Atlético Punta Arenas|Calle Colón 2200, Punta Arenas, Magallanes|Alonso Rodríguez,Sofía Orellan
+157490014|Club Atlético Punta Arenas|Calle Colón 2200, Punta Arenas, Magallanes|Alonso Rodríguez,Sofía Orellana

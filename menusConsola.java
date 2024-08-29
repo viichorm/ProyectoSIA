@@ -16,9 +16,9 @@ public class menusConsola {
             System.out.println("*****   3. Actividades de un club      *****");
             System.out.println("*****   4. Salir                       *****");
             System.out.println("********************************************");
-            System.out.print("Elija la opción: ");
+            System.out.print("Seleccione una opción: ");
             op = buffer.readLine();
-            System.out.println("--- La opción elegida es: " + op + "\n");
+            System.out.println("--- La opción seleccionada es: " + op + "\n");
 
             switch (Integer.parseInt(op)) {
                 case 1:
@@ -51,19 +51,20 @@ public class menusConsola {
         do {
             System.out.println("*****              Submenú: Lista de Clubes             *****");
             System.out.println("*************************************************************");
-            System.out.println("***** 1. Mostrar lista de IDs de los clubes             *****");
+            System.out.println("***** 1. Mostrar lista de IDs y Nombres de los clubes   *****");
             System.out.println("***** 2. Mostrar lista completa de clubes y actividades *****");
             System.out.println("***** 3. Regresar al menú principal                     *****");
             System.out.println("*************************************************************");
-            System.out.print("Elija la opción: ");
+            System.out.print("Seleccione una opción: ");
             op = buffer.readLine();
-            System.out.println("--- La opción elegida es: " + op + "\n");
+            System.out.println("--- La opción seleccionada es: " + op + "\n");
 
             switch (Integer.parseInt(op)) {
                 case 1:
                     System.out.println("Lista de IDs de los Clubes:");
                     for (Integer id : clubes.keySet()) {
-                        System.out.println("ID del Club: " + id);
+                        clubesDeportivos club = clubes.get(id);
+                        System.out.println("ID del Club: " + club.getidClub() + " || Nombre: " + club.getNombre());
                     }
                     break;
 
@@ -81,7 +82,7 @@ public class menusConsola {
                                 System.out.println("  - " + actividad.getActividad() + " en " + actividad.getLugar() + " a las " + actividad.getHorario());
                             }
                         }
-                        System.out.println("Miembros: " + club.getSocios());
+                        System.out.println("Socios: " + club.getSocios());
                         System.out.println();
                     }
                     break;
@@ -94,7 +95,7 @@ public class menusConsola {
                     System.out.println("Opción no válida, intente nuevamente.");
                     break;
             }
-            esperarTecla(buffer);  // Espera al usuario para continuar
+            esperarTecla(buffer);  
         } while (!op.equals("3"));
     }
 
@@ -109,24 +110,24 @@ public class menusConsola {
             System.out.println("***** 3. Eliminar Club              *****");
             System.out.println("***** 4. Regresar al menú principal *****");
             System.out.println("*****************************************");
-            System.out.print("Elija la opción: ");
+            System.out.print("Seleccione una opción: ");
             op = buffer.readLine();
-            System.out.println("--- La opción elegida es: " + op + "\n");
+            System.out.println("--- La opción seleccionada es: " + op + "\n");
 
             switch (Integer.parseInt(op)) {
                 case 1:
-                    //agregarClub(clubes, buffer);
-                    System.out.println("FUNCION AUN NO DISPONIBLE");
+                    clubesDeportivos.agregarClub(clubes, buffer);
+                    
                     break;
 
                 case 2:
-                    //editarClub(clubes, buffer);
-                    System.out.println("FUNCION AUN NO DISPONIBLE");
+                    clubesDeportivos.editarClub(clubes, buffer);
+                    
                     break;
 
                 case 3:
-                    //eliminarClub(clubes, buffer);
-                    System.out.println("FUNCION AUN NO DISPONIBLE");
+                    clubesDeportivos.eliminarClub(clubes, buffer);
+                    
                     break;
 
                 case 4:
@@ -152,16 +153,18 @@ public class menusConsola {
             return;
         }
 
-        System.out.println("Club Seleccionado = " + club.getNombre());
+        System.out.println("\nClub Seleccionado = " + club.getNombre());
 
         boolean continuar = true;
         while (continuar) {
-            System.out.println("\n--- Menú de Gestión de Actividades ---");
-            System.out.println("1. Agregar actividad");
-            System.out.println("2. Editar actividad");
-            System.out.println("3. Eliminar actividad");
-            System.out.println("4. Mostrar actividades");
-            System.out.println("5. Volver al menú principal\n");
+            System.out.println("\n*****       Menú de Gestión de Actividades       *****");
+            System.out.println("******************************************************");
+            System.out.println("***** 1. Agregar actividad                      *****");
+            System.out.println("***** 2. Editar actividad                       *****");
+            System.out.println("***** 3. Eliminar actividad                     *****");
+            System.out.println("***** 4. Mostrar actividades                    *****");
+            System.out.println("***** 5. Volver al menú principal               *****");
+            System.out.println("******************************************************");
             System.out.print("Seleccione una opción: ");
 
             

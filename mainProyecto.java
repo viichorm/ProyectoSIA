@@ -17,5 +17,4 @@ public class mainProyecto {
             System.out.println("Error al cargar los archivos: " + e.getMessage());
         }
     }
-
 }

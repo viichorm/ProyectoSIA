@@ -177,7 +177,7 @@ public class actividadesClubes{
     public static void mostrarActividades(ArrayList<actividadesClubes> actividades) {
         if (actividades.isEmpty()) {
             System.out.println("No hay actividades registradas.");
-            return;
+            return; 
         }
 
         System.out.println("\n--- Lista de Actividades ---");
@@ -191,5 +191,4 @@ public class actividadesClubes{
         }
     }
 
-    
 }
