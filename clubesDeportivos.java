@@ -69,7 +69,7 @@ public class clubesDeportivos{
     {
         if(validar && id <= 0)
         {
-            throw new IllegalArgumentException("El ID del club debe ser positivo.");
+            throw new IllegalArgumentException("El ID del club debe ser positivo."); 
         }
         this.idClub = id;
     }
@@ -111,5 +111,45 @@ public class clubesDeportivos{
         }
         this.socios.addAll(Arrays.asList(sociosA));
     }
+
+    //Metodos para la gestión de clubes.
+
+    //Función para agregar un club. 
+    public static void agregarClub(HashMap<Integer, clubesDeportivos> clubes, clubesDeportivos club)
+    {
+        if(club != null && !clubes.containsKey(club.getidClub()))
+        {
+            clubes.put(club.getidClub(), club);
+            System.out.println("Club agregado exitosamente.");
+        }
+        else{
+            System.out.println("No se pudo agregar el club, puede que este ya exista en el sistema.");
+        }
+    }
     
+    //Funcion para actualizar los datos de un club.
+    public static void editarClub(HashMap<Integer, clubesDeportivos> clubes, clubesDeportivos clubEdit, int idClub)
+    {
+        if(clubes.containsKey(idClub))
+        {
+            clubes.put(idClub, clubEdit);
+            System.out.println("Datos del club editados correctamente.");
+        }
+        else{
+            System.out.println("No se pudo editar el club. No existe un club con ese ID en el sistema.");
+        }
+    }
+
+    //Funcion para eliminar un club.
+    public static void eliminarClub(HashMap<Integer, clubesDeportivos> clubes, int idClub)
+    {
+        if(clubes.containsKey(idClub))
+        {
+            clubes.remove(idClub);
+            System.out.println("Club eliminado exitosamente.");
+        }
+        else{
+            System.out.println("No se puedo eliminar el club. No se encontro el club con ese ID en el sistema.");
+        }
+    }
 }
