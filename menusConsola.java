@@ -13,7 +13,8 @@ public class menusConsola {
             System.out.println("*****    Elija una de las opciones     *****");
             System.out.println("*****   1. Lista de Clubes             *****");
             System.out.println("*****   2. Editar Clubes               *****");
-            System.out.println("*****   3. Salir                       *****");
+            System.out.println("*****   3. Actividades de un club      *****");
+            System.out.println("*****   4. Salir                       *****");
             System.out.println("********************************************");
             System.out.print("Elija la opción: ");
             op = buffer.readLine();
@@ -29,6 +30,11 @@ public class menusConsola {
                     break;
 
                 case 3:
+                    actividadesClubs(clubes, buffer);
+                    break;
+
+
+                case 4:
                     System.out.println("Saliendo del programa...");
                     break;
 
@@ -36,7 +42,7 @@ public class menusConsola {
                     System.out.println("Opción no válida, intente nuevamente.");
                     break;
             }
-        } while (!op.equals("3"));
+        } while (!op.equals("4"));
     }
 
     public static void mostrarSubMenuListaClubes(HashMap<Integer, clubesDeportivos> clubes, BufferedReader buffer) throws IOException {
@@ -134,6 +140,87 @@ public class menusConsola {
             esperarTecla(buffer);  
         } while (!op.equals("4"));
     }
+    
+    private static void actividadesClubs(HashMap<Integer, clubesDeportivos> clubes, BufferedReader buffer) throws IOException {
+        System.out.print("Ingrese el ID del club: ");
+        int idClub = Integer.parseInt(buffer.readLine());
+        clubesDeportivos club = clubes.get(idClub);
+    
+        if (club == null) {
+            System.out.println("Club no encontrado.");
+            System.out.println("Regresando al menú principal...");
+            return;
+        }
+
+        System.out.println("Club Seleccionado = " + club.getNombre());
+
+        boolean continuar = true;
+        while (continuar) {
+            System.out.println("\n--- Menú de Gestión de Actividades ---");
+            System.out.println("1. Agregar actividad");
+            System.out.println("2. Editar actividad");
+            System.out.println("3. Eliminar actividad");
+            System.out.println("4. Mostrar actividades");
+            System.out.println("5. Volver al menú principal\n");
+            System.out.print("Seleccione una opción: ");
+
+            
+            int opcion = Integer.parseInt(buffer.readLine());
+    
+            switch (opcion) {
+                case 1:
+                    actividadesClubes nuevaActividad = new actividadesClubes();
+                    System.out.print("Ingrese el ID de la actividad: ");
+                    nuevaActividad.setID(Integer.parseInt(buffer.readLine()));
+                    System.out.print("Ingrese el nombre de la actividad: ");
+                    nuevaActividad.setActividad(buffer.readLine());
+                    System.out.print("Ingrese el horario de la actividad: ");
+                    nuevaActividad.setHorario(buffer.readLine());
+                    System.out.print("Ingrese la descripción de la actividad: ");
+                    nuevaActividad.setDescripcion(buffer.readLine());
+                    System.out.print("Ingrese el lugar de la actividad: ");
+                    nuevaActividad.setLugar(buffer.readLine());
+    
+                    actividadesClubes.agregarActividad(club.getActividades(), nuevaActividad);
+                    esperarTecla(buffer);
+                    break;
+    
+                case 2:
+                    System.out.print("Ingrese el ID de la actividad a editar: ");
+                    int idActividadEditar = Integer.parseInt(buffer.readLine());
+                    actividadesClubes.editarActividad(club.getActividades(), idActividadEditar, buffer);
+                    esperarTecla(buffer);
+                    break;
+    
+                case 3:
+                    System.out.print("Ingrese el ID de la actividad a eliminar: ");
+                    int idActividadEliminar = Integer.parseInt(buffer.readLine());
+                    actividadesClubes.eliminarActividad(club.getActividades(), idActividadEliminar);
+                    esperarTecla(buffer);
+                    break;
+    
+                case 4:
+                    actividadesClubes.mostrarActividades(club.getActividades());
+                    esperarTecla(buffer);
+                    break;
+                    
+    
+                case 5:
+                    continuar = false;
+                    break;
+    
+                default:
+                    System.out.println("Opción no válida.");
+                    break;
+            }
+        }
+    }
+    
+
+    
+    
+
+
     public static void esperarTecla(BufferedReader buffer) throws IOException {
         System.out.println("\nPresione Enter para continuar...");
         buffer.readLine(); 
