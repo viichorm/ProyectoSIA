@@ -75,7 +75,6 @@ public class ClubesDeportivos{
         }
         this.idClub = id;
     }
-
     // Establecer el nombre del club en mayusculas si se desea.
     public void setNombre(String nombre, boolean mayuscula)
     {
