@@ -3,10 +3,10 @@ import java.util.*;
 
 
 
-public class cargarArchivo {
+public class CargarArchivo {
 
-    public static HashMap<Integer, clubesDeportivos> cargarClubes(String fileName) throws IOException {
-        HashMap<Integer, clubesDeportivos> clubesMap = new HashMap<>();
+    public static HashMap<Integer, ClubesDeportivos> cargarClubes(String fileName) throws IOException {
+        HashMap<Integer, ClubesDeportivos> clubesMap = new HashMap<>();
         BufferedReader br = new BufferedReader(new FileReader(fileName));
         String line;
 
@@ -18,11 +18,11 @@ public class cargarArchivo {
             String miembrosString = datos[3];
             String[] miembrosArray = miembrosString.split(",");
 
-            clubesDeportivos club = new clubesDeportivos();
+            ClubesDeportivos club = new ClubesDeportivos();
             club.setId(idClub);
             club.setNombre(nombre);
             club.setDireccion(direccion);
-            club.setActividades(new ArrayList<actividadesClubes>());
+            club.setActividades(new ArrayList<ActividadesClubes>());
             club.setSocios(new ArrayList<String>());
 
             for (String miembro : miembrosArray) {
@@ -35,7 +35,7 @@ public class cargarArchivo {
         return clubesMap;
     }
 
-    public static void cargarActividades(String fileName, HashMap<Integer, clubesDeportivos> clubesMap) throws IOException {
+    public static void cargarActividades(String fileName, HashMap<Integer, ClubesDeportivos> clubesMap) throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(fileName));
         String line;
 
@@ -44,7 +44,7 @@ public class cargarArchivo {
             int idClub = Integer.parseInt(datos[0]);
 
             if (clubesMap.containsKey(idClub)) {
-                actividadesClubes actividad = new actividadesClubes();
+                ActividadesClubes actividad = new ActividadesClubes();
                 actividad.setActividad(datos[1]);
                 actividad.setDescripcion(datos[2]);
                 actividad.setID(Integer.parseInt(datos[3]));

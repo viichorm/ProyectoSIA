@@ -2,7 +2,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.*;
 
-public class actividadesClubes{
+public class ActividadesClubes{
     private int idActividad; //Identificador de la actividad.
     private String actividad; // Nombre de la actividad.
     private String descripcion; // Descripción de la actividad.
@@ -10,7 +10,7 @@ public class actividadesClubes{
     private String lugar;
 
     //Constructor default.
-    public actividadesClubes()
+    public ActividadesClubes()
     {
         this.idActividad = 0;
         this.actividad = "";
@@ -20,7 +20,7 @@ public class actividadesClubes{
     }
 
     //Constructor con tres parametros basicos. (Id, actividad,horario)
-    public actividadesClubes(int idActividad, String actividad, String horario)
+    public ActividadesClubes(int idActividad, String actividad, String horario)
     {
         this.idActividad = idActividad;
         this.actividad = actividad;
@@ -30,7 +30,7 @@ public class actividadesClubes{
     }
 
     //Constructor con todos los parametros.
-    public actividadesClubes(int idActividad, String actividad, String horario, String descripcion, String lugar)
+    public ActividadesClubes(int idActividad, String actividad, String horario, String descripcion, String lugar)
     {
         this.idActividad = idActividad;
         this.actividad = actividad;
@@ -40,7 +40,7 @@ public class actividadesClubes{
     }
 
     //Constructor que copia datos de una actividad ya existente.
-    public actividadesClubes(actividadesClubes actividad)
+    public ActividadesClubes(ActividadesClubes actividad)
     {
         this.idActividad = actividad.idActividad;
         this.actividad = actividad.actividad;
@@ -50,44 +50,18 @@ public class actividadesClubes{
     } 
 
     //Getters
-    public String getActividad() {
-        return actividad;
-    }
-    public String getDescripcion() {
-        return descripcion;
-    }
-    public int getidActividad() {
-        return idActividad;
-    }
-    
-    public String getHorario() {
-        return horario;
-    }
-
-    public String getLugar() {
-        return lugar;
-    }   
+    public String getActividad() {return actividad;}
+    public String getDescripcion() { return descripcion;}
+    public int getidActividad() {return idActividad;}
+    public String getHorario() {return horario;}
+    public String getLugar() {return lugar;}   
 
     //Setters
-    public void setActividad(String actividad) {
-        this.actividad = actividad;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public void setID(int id) {
-        this.idActividad = id;
-    }
-
-    public void setHorario(String horario) {
-        this.horario = horario;
-    }
-
-    public void setLugar(String lugar) {
-        this.lugar = lugar;
-    }
+    public void setActividad(String actividad) {this.actividad = actividad;}
+    public void setDescripcion(String descripcion) {this.descripcion = descripcion;}
+    public void setID(int id) {this.idActividad = id;}
+    public void setHorario(String horario) {this.horario = horario;}
+    public void setLugar(String lugar) {this.lugar = lugar;}
 
     //Metodos adicionales.
 
@@ -135,14 +109,14 @@ public class actividadesClubes{
     }
 
     // Método para agregar una nueva actividad al club
-    public static void agregarActividad(ArrayList<actividadesClubes> actividades, actividadesClubes nuevaActividad) {
+    public static void agregarActividad(ArrayList<ActividadesClubes> actividades, ActividadesClubes nuevaActividad) {
         actividades.add(nuevaActividad);
         System.out.println("Actividad agregada con éxito.");
     }
 
     // Método para editar una actividad existente
-    public static void editarActividad(ArrayList<actividadesClubes> actividades, int idActividad, BufferedReader buffer) throws IOException {
-        for (actividadesClubes actividad : actividades) {
+    public static void editarActividad(ArrayList<ActividadesClubes> actividades, int idActividad, BufferedReader buffer) throws IOException {
+        for (ActividadesClubes actividad : actividades) {
             if (actividad.getidActividad() == idActividad) {
                 System.out.print("Ingrese el nuevo nombre de la actividad: ");
                 actividad.setActividad(buffer.readLine());
@@ -160,10 +134,10 @@ public class actividadesClubes{
     }
 
     // Método para eliminar una actividad por su ID
-    public static void eliminarActividad(ArrayList<actividadesClubes> actividades, int idActividad) {
-        Iterator<actividadesClubes> iterator = actividades.iterator();
+    public static void eliminarActividad(ArrayList<ActividadesClubes> actividades, int idActividad) {
+        Iterator<ActividadesClubes> iterator = actividades.iterator();
         while (iterator.hasNext()) {
-            actividadesClubes actividad = iterator.next();
+            ActividadesClubes actividad = iterator.next();
             if (actividad.getidActividad() == idActividad) {
                 iterator.remove();
                 System.out.println("Actividad eliminada con éxito.");
@@ -174,14 +148,14 @@ public class actividadesClubes{
     }
 
     // Método para mostrar todas las actividades del club
-    public static void mostrarActividades(ArrayList<actividadesClubes> actividades) {
+    public static void mostrarActividades(ArrayList<ActividadesClubes> actividades) {
         if (actividades.isEmpty()) {
             System.out.println("No hay actividades registradas.");
             return; 
         }
 
         System.out.println("\n--- Lista de Actividades ---");
-        for (actividadesClubes actividad : actividades) {
+        for (ActividadesClubes actividad : actividades) {
             System.out.println("ID: " + actividad.getidActividad());
             System.out.println("Nombre: " + actividad.getActividad());
             System.out.println("Descripción: " + actividad.getDescripcion());

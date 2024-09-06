@@ -1,15 +1,15 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.*;
-public class clubesDeportivos{
+public class ClubesDeportivos{
     private int idClub; //identificador del club
     private String nombre; //nombre del club
     private String direccion; //direccion donde se encuentra el club
-    private ArrayList<actividadesClubes> actividades; //actividades cuales tiene el club
+    private ArrayList<ActividadesClubes> actividades; //actividades cuales tiene el club
     private ArrayList<String> socios; //Socios a quienes les pertenecen el club
 
     // Constructor default.
-    public clubesDeportivos()
+    public ClubesDeportivos()
     {
         this.nombre = "";
         this.direccion = "";
@@ -19,7 +19,7 @@ public class clubesDeportivos{
     }
 
     // Constructor con parametros basicos (idClub, nombre, direccion)
-    public clubesDeportivos(int idClub, String nombre, String direccion)
+    public ClubesDeportivos(int idClub, String nombre, String direccion)
     {
         this.idClub = idClub;
         this.nombre = nombre;
@@ -29,7 +29,7 @@ public class clubesDeportivos{
     }
 
     // Constructor con todos los parametros.
-    public clubesDeportivos(int idClub, String nombre, String direccion, ArrayList<actividadesClubes> actvidades, ArrayList<String> socios)
+    public ClubesDeportivos(int idClub, String nombre, String direccion, ArrayList<ActividadesClubes> actvidades, ArrayList<String> socios)
     {
         this.idClub = idClub;
         this.nombre = nombre;
@@ -40,7 +40,7 @@ public class clubesDeportivos{
     }
 
     // Constructor que copia datos ya de un club ya existente.
-    public clubesDeportivos(clubesDeportivos club)
+    public ClubesDeportivos(ClubesDeportivos club)
     {
         this.idClub = club.idClub;
         this.nombre = club.nombre;
@@ -53,14 +53,14 @@ public class clubesDeportivos{
     public String getNombre(){return nombre;}
     public String getDireccion(){return direccion;}
     public int getidClub(){return idClub;}
-    public ArrayList<actividadesClubes> getActividades(){return actividades;}
+    public ArrayList<ActividadesClubes> getActividades(){return actividades;}
     public ArrayList<String> getSocios(){return socios;}
 
     // Setters
     public void setNombre(String nombre){this.nombre = nombre;}
     public void setDireccion(String direccion){this.direccion = direccion;}
     public void setId(int id){this.idClub = id;}
-    public void setActividades(ArrayList<actividadesClubes> actividades) {this.actividades = actividades;}
+    public void setActividades(ArrayList<ActividadesClubes> actividades) {this.actividades = actividades;}
     public void setSocios(ArrayList<String> Socios){this.socios = Socios;}
 
 
@@ -116,7 +116,7 @@ public class clubesDeportivos{
 
     //Metodos para la gestión de clubes.
 
-    public static void agregarClub(HashMap<Integer, clubesDeportivos> clubes, BufferedReader buffer) throws IOException {
+    public static void agregarClub(HashMap<Integer, ClubesDeportivos> clubes, BufferedReader buffer) throws IOException {
         System.out.println("Agregar nuevo club:");
         System.out.print("Ingrese el nombre del club: ");
         String nombre = buffer.readLine();
@@ -125,7 +125,7 @@ public class clubesDeportivos{
         System.out.print("Ingrese el ID del club: ");
         int idClub = Integer.parseInt(buffer.readLine());
 
-        clubesDeportivos nuevoClub = new clubesDeportivos();
+        ClubesDeportivos nuevoClub = new ClubesDeportivos();
         nuevoClub.setNombre(nombre);
         nuevoClub.setDireccion(direccion);
         nuevoClub.setId(idClub);
@@ -136,12 +136,12 @@ public class clubesDeportivos{
         System.out.println("Club agregado exitosamente.");
     }
 
-    public static void editarClub(HashMap<Integer, clubesDeportivos> clubes, BufferedReader buffer) throws IOException {
+    public static void editarClub(HashMap<Integer, ClubesDeportivos> clubes, BufferedReader buffer) throws IOException {
         System.out.print("Ingrese el ID del club a editar: ");
         int idClub = Integer.parseInt(buffer.readLine());
 
         if (clubes.containsKey(idClub)) {
-            clubesDeportivos club = clubes.get(idClub);
+            ClubesDeportivos club = clubes.get(idClub);
 
             System.out.print("Ingrese el nuevo nombre del club (actual: " + club.getNombre() + "): ");
             String nuevoNombre = buffer.readLine();
@@ -161,7 +161,7 @@ public class clubesDeportivos{
         }
     }
 
-    public static void eliminarClub(HashMap<Integer, clubesDeportivos> clubes, BufferedReader buffer) throws IOException {
+    public static void eliminarClub(HashMap<Integer, ClubesDeportivos> clubes, BufferedReader buffer) throws IOException {
         System.out.print("Ingrese el ID del club a eliminar: ");
         int idClub = Integer.parseInt(buffer.readLine());
 

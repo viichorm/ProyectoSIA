@@ -1,9 +1,9 @@
 import java.io.*;
 import java.util.*;
 
-public class menusConsola {
+public class MenusConsola {
 
-    public static void mostrarMenuPrincipal(HashMap<Integer, clubesDeportivos> clubes) throws IOException {
+    public static void mostrarMenuPrincipal(HashMap<Integer, ClubesDeportivos> clubes) throws IOException {
         BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
         String op = "";
 
@@ -45,7 +45,7 @@ public class menusConsola {
         } while (!op.equals("4"));
     }
 
-    public static void mostrarSubMenuListaClubes(HashMap<Integer, clubesDeportivos> clubes, BufferedReader buffer) throws IOException {
+    public static void mostrarSubMenuListaClubes(HashMap<Integer, ClubesDeportivos> clubes, BufferedReader buffer) throws IOException {
         String op = "";
 
         do {
@@ -63,14 +63,14 @@ public class menusConsola {
                 case 1:
                     System.out.println("Lista de IDs de los Clubes:");
                     for (Integer id : clubes.keySet()) {
-                        clubesDeportivos club = clubes.get(id);
+                        ClubesDeportivos club = clubes.get(id);
                         System.out.println("ID del Club: " + club.getidClub() + " || Nombre: " + club.getNombre());
                     }
                     break;
 
                 case 2:
                     for (Integer id : clubes.keySet()) {
-                        clubesDeportivos club = clubes.get(id);
+                        ClubesDeportivos club = clubes.get(id);
                         System.out.println("\nClub ID: " + club.getidClub());
                         System.out.println("Nombre: " + club.getNombre());
                         System.out.println("Dirección: " + club.getDireccion());
@@ -78,7 +78,7 @@ public class menusConsola {
                         if (club.getActividades().isEmpty()) {
                             System.out.println("  - No hay actividades");
                         } else {
-                            for (actividadesClubes actividad : club.getActividades()) {
+                            for (ActividadesClubes actividad : club.getActividades()) {
                                 System.out.println("  - " + actividad.getActividad() + " en " + actividad.getLugar() + " a las " + actividad.getHorario());
                             }
                         }
@@ -99,7 +99,7 @@ public class menusConsola {
         } while (!op.equals("3"));
     }
 
-    public static void mostrarSubMenuEditarClubes(HashMap<Integer, clubesDeportivos> clubes, BufferedReader buffer) throws IOException {
+    public static void mostrarSubMenuEditarClubes(HashMap<Integer, ClubesDeportivos> clubes, BufferedReader buffer) throws IOException {
         String op = "";
 
         do {
@@ -116,17 +116,17 @@ public class menusConsola {
 
             switch (Integer.parseInt(op)) {
                 case 1:
-                    clubesDeportivos.agregarClub(clubes, buffer);
+                    ClubesDeportivos.agregarClub(clubes, buffer);
                     
                     break;
 
                 case 2:
-                    clubesDeportivos.editarClub(clubes, buffer);
+                    ClubesDeportivos.editarClub(clubes, buffer);
                     
                     break;
 
                 case 3:
-                    clubesDeportivos.eliminarClub(clubes, buffer);
+                    ClubesDeportivos.eliminarClub(clubes, buffer);
                     
                     break;
 
@@ -142,10 +142,10 @@ public class menusConsola {
         } while (!op.equals("4"));
     }
     
-    private static void actividadesClubs(HashMap<Integer, clubesDeportivos> clubes, BufferedReader buffer) throws IOException {
+    private static void actividadesClubs(HashMap<Integer, ClubesDeportivos> clubes, BufferedReader buffer) throws IOException {
         System.out.print("Ingrese el ID del club: ");
         int idClub = Integer.parseInt(buffer.readLine());
-        clubesDeportivos club = clubes.get(idClub);
+        ClubesDeportivos club = clubes.get(idClub);
     
         if (club == null) {
             System.out.println("Club no encontrado.");
@@ -172,7 +172,7 @@ public class menusConsola {
     
             switch (opcion) {
                 case 1:
-                    actividadesClubes nuevaActividad = new actividadesClubes();
+                    ActividadesClubes nuevaActividad = new ActividadesClubes();
                     System.out.print("Ingrese el ID de la actividad: ");
                     nuevaActividad.setID(Integer.parseInt(buffer.readLine()));
                     System.out.print("Ingrese el nombre de la actividad: ");
@@ -184,26 +184,26 @@ public class menusConsola {
                     System.out.print("Ingrese el lugar de la actividad: ");
                     nuevaActividad.setLugar(buffer.readLine());
     
-                    actividadesClubes.agregarActividad(club.getActividades(), nuevaActividad);
+                    ActividadesClubes.agregarActividad(club.getActividades(), nuevaActividad);
                     esperarTecla(buffer);
                     break;
     
                 case 2:
                     System.out.print("Ingrese el ID de la actividad a editar: ");
                     int idActividadEditar = Integer.parseInt(buffer.readLine());
-                    actividadesClubes.editarActividad(club.getActividades(), idActividadEditar, buffer);
+                    ActividadesClubes.editarActividad(club.getActividades(), idActividadEditar, buffer);
                     esperarTecla(buffer);
                     break;
     
                 case 3:
                     System.out.print("Ingrese el ID de la actividad a eliminar: ");
                     int idActividadEliminar = Integer.parseInt(buffer.readLine());
-                    actividadesClubes.eliminarActividad(club.getActividades(), idActividadEliminar);
+                    ActividadesClubes.eliminarActividad(club.getActividades(), idActividadEliminar);
                     esperarTecla(buffer);
                     break;
     
                 case 4:
-                    actividadesClubes.mostrarActividades(club.getActividades());
+                    ActividadesClubes.mostrarActividades(club.getActividades());
                     esperarTecla(buffer);
                     break;
                     
