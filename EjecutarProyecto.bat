@@ -1,5 +1,4 @@
 @echo off
-cd C:\Proyecto\ProyectoSIA
 
 :: Compilar el archivo MainProyecto.java
 javac MainProyecto.java
