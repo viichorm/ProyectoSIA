@@ -108,14 +108,27 @@ public class ActividadesClubes{
         }
     }
 
-    // Método para agregar una nueva actividad al club
-    public static void agregarActividad(ArrayList<ActividadesClubes> actividades, ActividadesClubes nuevaActividad) {
+    public static void agregarActividad(ArrayList<ActividadesClubes> actividades, BufferedReader buffer) throws IOException {
+        ActividadesClubes nuevaActividad = new ActividadesClubes();
+        System.out.print("Ingrese el ID de la actividad: ");
+        nuevaActividad.setID(Integer.parseInt(buffer.readLine()));
+        System.out.print("Ingrese el nombre de la actividad: ");
+        nuevaActividad.setActividad(buffer.readLine());
+        System.out.print("Ingrese el horario de la actividad: ");
+        nuevaActividad.setHorario(buffer.readLine());
+        System.out.print("Ingrese la descripción de la actividad: ");
+        nuevaActividad.setDescripcion(buffer.readLine());
+        System.out.print("Ingrese el lugar de la actividad: ");
+        nuevaActividad.setLugar(buffer.readLine());
         actividades.add(nuevaActividad);
         System.out.println("Actividad agregada con éxito.");
     }
 
-    // Método para editar una actividad existente
-    public static void editarActividad(ArrayList<ActividadesClubes> actividades, int idActividad, BufferedReader buffer) throws IOException {
+
+    public static void editarActividad(ArrayList<ActividadesClubes> actividades, BufferedReader buffer) throws IOException {
+        System.out.print("Ingrese el ID de la actividad a editar: ");
+        int idActividad = Integer.parseInt(buffer.readLine());
+
         for (ActividadesClubes actividad : actividades) {
             if (actividad.getidActividad() == idActividad) {
                 System.out.print("Ingrese el nuevo nombre de la actividad: ");
@@ -133,12 +146,14 @@ public class ActividadesClubes{
         System.out.println("Actividad no encontrada.");
     }
 
-    // Método para eliminar una actividad por su ID
-    public static void eliminarActividad(ArrayList<ActividadesClubes> actividades, int idActividad) {
+    public static void eliminarActividad(ArrayList<ActividadesClubes> actividades, BufferedReader buffer) throws IOException {
+        System.out.print("Ingrese el ID de la actividad a eliminar: ");
+        int idActividadEliminar = Integer.parseInt(buffer.readLine());
+        
         Iterator<ActividadesClubes> iterator = actividades.iterator();
         while (iterator.hasNext()) {
             ActividadesClubes actividad = iterator.next();
-            if (actividad.getidActividad() == idActividad) {
+            if (actividad.getidActividad() == idActividadEliminar) {
                 iterator.remove();
                 System.out.println("Actividad eliminada con éxito.");
                 return;
@@ -147,7 +162,19 @@ public class ActividadesClubes{
         System.out.println("Actividad no encontrada.");
     }
 
-    // Método para mostrar todas las actividades del club
+    public static void eliminarActividad(ArrayList<ActividadesClubes> actividades) {
+        if (actividades == null || actividades.isEmpty()) {
+            System.out.println("No hay actividades para eliminar.");
+            return;
+        }
+    
+        // Elimina todas las actividades
+        actividades.clear();
+        System.out.println("Todas las actividades del club han sido eliminadas.");
+    }
+    
+
+
     public static void mostrarActividades(ArrayList<ActividadesClubes> actividades) {
         if (actividades.isEmpty()) {
             System.out.println("No hay actividades registradas.");
@@ -164,5 +191,6 @@ public class ActividadesClubes{
             System.out.println("---------------------------");
         }
     }
+
 
 }

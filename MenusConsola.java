@@ -117,17 +117,18 @@ public class MenusConsola {
             switch (Integer.parseInt(op)) {
                 case 1:
                     ClubesDeportivos.agregarClub(clubes, buffer);
-                    
+                    GestorPersistencia.guardarClubes("ArchivosTxt/Clubes.txt", clubes);  // Guardar los cambios
                     break;
 
                 case 2:
                     ClubesDeportivos.editarClub(clubes, buffer);
-                    
+                    GestorPersistencia.guardarClubes("ArchivosTxt/Clubes.txt", clubes);  // Guardar los cambios
                     break;
 
                 case 3:
                     ClubesDeportivos.eliminarClub(clubes, buffer);
-                    
+                    GestorPersistencia.guardarActividades("ArchivosTxt/ActividadesClubes.txt", clubes);
+                    GestorPersistencia.guardarClubes("ArchivosTxt/Clubes.txt", clubes);  // Guardar los cambios
                     break;
 
                 case 4:
@@ -138,7 +139,7 @@ public class MenusConsola {
                     System.out.println("Opción no válida, intente nuevamente.");
                     break;
             }
-            esperarTecla(buffer);  
+            esperarTecla(buffer);
         } while (!op.equals("4"));
     }
     
@@ -152,9 +153,9 @@ public class MenusConsola {
             System.out.println("Regresando al menú principal...");
             return;
         }
-
+    
         System.out.println("\nClub Seleccionado = " + club.getNombre());
-
+    
         boolean continuar = true;
         while (continuar) {
             System.out.println("\n*****       Menú de Gestión de Actividades       *****");
@@ -166,39 +167,25 @@ public class MenusConsola {
             System.out.println("***** 5. Volver al menú principal               *****");
             System.out.println("******************************************************");
             System.out.print("Seleccione una opción: ");
-
-            
+    
             int opcion = Integer.parseInt(buffer.readLine());
     
             switch (opcion) {
                 case 1:
-                    ActividadesClubes nuevaActividad = new ActividadesClubes();
-                    System.out.print("Ingrese el ID de la actividad: ");
-                    nuevaActividad.setID(Integer.parseInt(buffer.readLine()));
-                    System.out.print("Ingrese el nombre de la actividad: ");
-                    nuevaActividad.setActividad(buffer.readLine());
-                    System.out.print("Ingrese el horario de la actividad: ");
-                    nuevaActividad.setHorario(buffer.readLine());
-                    System.out.print("Ingrese la descripción de la actividad: ");
-                    nuevaActividad.setDescripcion(buffer.readLine());
-                    System.out.print("Ingrese el lugar de la actividad: ");
-                    nuevaActividad.setLugar(buffer.readLine());
-    
-                    ActividadesClubes.agregarActividad(club.getActividades(), nuevaActividad);
+                    ActividadesClubes.agregarActividad(club.getActividades(), buffer);
+                    GestorPersistencia.guardarActividades("ArchivosTxt/ActividadesClubes.txt", clubes);  // Guardar los cambios
                     esperarTecla(buffer);
                     break;
     
                 case 2:
-                    System.out.print("Ingrese el ID de la actividad a editar: ");
-                    int idActividadEditar = Integer.parseInt(buffer.readLine());
-                    ActividadesClubes.editarActividad(club.getActividades(), idActividadEditar, buffer);
+                    ActividadesClubes.editarActividad(club.getActividades(), buffer);
+                    GestorPersistencia.guardarActividades("ArchivosTxt/ActividadesClubes.txt", clubes);  // Guardar los cambios
                     esperarTecla(buffer);
                     break;
     
                 case 3:
-                    System.out.print("Ingrese el ID de la actividad a eliminar: ");
-                    int idActividadEliminar = Integer.parseInt(buffer.readLine());
-                    ActividadesClubes.eliminarActividad(club.getActividades(), idActividadEliminar);
+                    ActividadesClubes.eliminarActividad(club.getActividades(), buffer);
+                    GestorPersistencia.guardarActividades("ArchivosTxt/ActividadesClubes.txt", clubes);  // Guardar los cambios
                     esperarTecla(buffer);
                     break;
     
@@ -206,7 +193,6 @@ public class MenusConsola {
                     ActividadesClubes.mostrarActividades(club.getActividades());
                     esperarTecla(buffer);
                     break;
-                    
     
                 case 5:
                     continuar = false;
@@ -218,6 +204,7 @@ public class MenusConsola {
             }
         }
     }
+    
     
 
     

@@ -132,6 +132,7 @@ public class ClubesDeportivos{
         nuevoClub.setSocios(new ArrayList<>());
 
         clubes.put(idClub, nuevoClub);
+        GestorPersistencia.guardarClubes("ArchivosTxt/Clubes.txt", clubes);
         System.out.println("Club agregado exitosamente.");
     }
 
@@ -153,7 +154,7 @@ public class ClubesDeportivos{
             if (!nuevaDireccion.isEmpty()) {
                 club.setDireccion(nuevaDireccion);
             }
-
+            GestorPersistencia.guardarClubes("ArchivosTxt/Clubes.txt", clubes);
             System.out.println("Club editado exitosamente.");
         } else {
             System.out.println("El club con ID " + idClub + " no existe.");
@@ -163,15 +164,26 @@ public class ClubesDeportivos{
     public static void eliminarClub(HashMap<Integer, ClubesDeportivos> clubes, BufferedReader buffer) throws IOException {
         System.out.print("Ingrese el ID del club a eliminar: ");
         int idClub = Integer.parseInt(buffer.readLine());
-
+    
+        // Verifica si el club existe
         if (clubes.containsKey(idClub)) {
+            // Obtén la instancia del club
+            ClubesDeportivos clubSeleccionado = clubes.get(idClub);
+            
+            // Elimina todas las actividades asociadas antes de eliminar el club
+            ArrayList<ActividadesClubes> actividades = clubSeleccionado.getActividades();
+            if (!actividades.isEmpty()) {
+                ActividadesClubes.eliminarActividad(actividades); // Llama al método para eliminar actividades
+            }
+    
+            // Elimina el club
             clubes.remove(idClub);
+            GestorPersistencia.guardarClubes("ArchivosTxt/Clubes.txt", clubes);
             System.out.println("Club eliminado exitosamente.");
         } else {
             System.out.println("El club con ID " + idClub + " no existe.");
         }
-        
-
     }
+    
 }
 
