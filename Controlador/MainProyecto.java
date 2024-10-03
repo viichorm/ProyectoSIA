@@ -1,5 +1,8 @@
+package Controlador;
 import java.io.*;
 import java.util.*;
+
+import Modelo.ClubesDeportivos;
 
 public class MainProyecto {
     public static void main(String[] args) {
