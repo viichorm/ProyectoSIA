@@ -27,6 +27,11 @@ public class ActividadesExtraDeportivas extends ActividadesClubes {
         this.tipoExtraDeportivo = tipoExtraDeportivo;
     }
 
+    @Override
+    public String toString() {
+        return super.toString() + " (Extra Deportiva)";
+    }
+
     // Método para mostrar actividades incluyendo detalles extra deportivos.
     public static void mostrarActividades(ArrayList<ActividadesClubes> actividades) {
         if (actividades.isEmpty()) {

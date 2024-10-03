@@ -50,5 +50,33 @@ public class GestorPersistencia {
         }
         escritor.close();
     }
+
+    public static void generarReporte(String nombreArchivo, HashMap<Integer, ClubesDeportivos> clubes) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(nombreArchivo))) {
+            writer.write("Reporte de Clubes y Actividades\n");
+            writer.write("--------------------------------\n");
+            
+            // Cambiamos el tipo de clubId a Integer
+            for (Integer clubId : clubes.keySet()) {
+                ClubesDeportivos club = clubes.get(clubId);
+                writer.write("Club: " + club.getNombre() + "\n"); 
+
+                List<ActividadesClubes> actividades = club.getActividades(); 
+                if (actividades != null && !actividades.isEmpty()) {
+                    for (ActividadesClubes actividad : actividades) {
+                        writer.write(" - Actividad: " + actividad.getActividad() + "\n"); 
+                    }
+                } else {
+                    writer.write(" - No hay actividades registradas.\n");
+                }
+                writer.write("\n"); // Espacio entre clubes
+            }
+            writer.write("--------------------------------\n");
+            writer.write("Fin del reporte.\n");
+            System.out.println("Reporte generado exitosamente en " + nombreArchivo);
+        } catch (IOException e) {
+            System.err.println("Error al generar el reporte: " + e.getMessage());
+        }
+    }
 }
 

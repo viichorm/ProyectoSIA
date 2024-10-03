@@ -4,6 +4,7 @@ import java.util.*;
 
 import Modelo.ActividadesClubes;
 import Modelo.ClubesDeportivos;
+import Modelo.GestorFiltros;
 import Modelo.GestorPersistencia;
 import Excepciones.ActividadNoEncontradaException;
 import Excepciones.ClubNoEncontradoException;
@@ -23,7 +24,8 @@ public class MenusConsola {
             System.out.println("*****   1. Lista de Clubes             *****");
             System.out.println("*****   2. Editar Clubes               *****");
             System.out.println("*****   3. Actividades de un club      *****");
-            System.out.println("*****   4. Salir                       *****");
+            System.out.println("*****   4. Generar Reporte             *****");
+            System.out.println("*****   5. Salir                       *****");
             System.out.println("********************************************");
             System.out.print("Seleccione una opción: ");
             try {
@@ -46,8 +48,18 @@ public class MenusConsola {
                             System.out.println(e.getMessage());
                         }
                         break;
-
                     case 4:
+                    System.out.print("Introduce el nombre del archivo para el reporte (ej. reporte_clubes.txt): ");
+                    String nombreArchivo;
+                    try {
+                        nombreArchivo = buffer.readLine();
+                        GestorPersistencia.generarReporte(nombreArchivo, clubes); 
+                    } catch (IOException e) {
+                        System.err.println("Error al leer el nombre del archivo: " + e.getMessage());
+                    }
+                
+                        break;
+                    case 5:
                         System.out.println("Saliendo del programa...");
                         break;
 
@@ -73,7 +85,8 @@ public class MenusConsola {
             System.out.println("*************************************************************");
             System.out.println("***** 1. Mostrar lista de IDs y Nombres de los clubes   *****");
             System.out.println("***** 2. Mostrar lista completa de clubes y actividades *****");
-            System.out.println("***** 3. Regresar al menú principal                     *****");
+            System.out.println("***** 3. Filtrar y mostrar actividades por hora         *****");
+            System.out.println("***** 4. Regresar al menú principal                     *****");
             System.out.println("*************************************************************");
             System.out.print("Seleccione una opción: ");
             try {
@@ -107,8 +120,16 @@ public class MenusConsola {
                             System.out.println();
                         }
                         break;
-
                     case 3:
+                        System.out.print("Ingrese el horario a filtrar: ");
+                        String horario = buffer.readLine();
+                        ArrayList<ActividadesClubes> actividadesFiltradasHorario = GestorFiltros.filtrarActividadesPorHorario(horario, clubes);
+                        GestorFiltros.mostrarActividadesFiltradas(actividadesFiltradasHorario);
+                        esperarTecla(buffer);
+                        break;
+                        
+
+                    case 4:
                         System.out.println("Regresando al menú principal...");
                         break;
 

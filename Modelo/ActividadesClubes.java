@@ -54,36 +54,41 @@ public class ActividadesClubes{
     }
 
     // Método adicional para convertir la actividad a mayúsculas.
-public void convertirActividadAMayusculas() {
-    this.actividad = this.actividad.toUpperCase();
-}
-
-public static void agregarActividad(ArrayList<ActividadesClubes> actividades, BufferedReader buffer) throws IOException {
-    System.out.print("¿Es una actividad extra deportiva? (si/no): ");
-    String esExtra = buffer.readLine().toLowerCase();
-
-    ActividadesClubes nuevaActividad = null;
-
-    if (esExtra.equals("si")) {
-        nuevaActividad = new ActividadesExtraDeportivas();
-        System.out.print("Ingrese el tipo de actividad extra deportiva: ");
-        ((ActividadesExtraDeportivas) nuevaActividad).setTipoExtraDeportivo(buffer.readLine());
+    public void convertirActividadAMayusculas() {
+        this.actividad = this.actividad.toUpperCase();
     }
 
-    System.out.print("Ingrese el ID de la actividad: ");
-    nuevaActividad.setID(Integer.parseInt(buffer.readLine()));
-    System.out.print("Ingrese el nombre de la actividad: ");
-    nuevaActividad.setActividad(buffer.readLine());
-    System.out.print("Ingrese el horario de la actividad: ");
-    nuevaActividad.setHorario(buffer.readLine());
-    System.out.print("Ingrese la descripción de la actividad: ");
-    nuevaActividad.setDescripcion(buffer.readLine());
-    System.out.print("Ingrese el lugar de la actividad: ");
-    nuevaActividad.setLugar(buffer.readLine());
+    @Override
+    public String toString() {
+        return "Actividad: " + actividad + ", Lugar: " + lugar + ", Horario: " + horario;
+    }
 
-    actividades.add(nuevaActividad);
-    System.out.println("Actividad agregada con éxito.");
-}
+    public static void agregarActividad(ArrayList<ActividadesClubes> actividades, BufferedReader buffer) throws IOException {
+        System.out.print("¿Es una actividad extra deportiva? (si/no): ");
+        String esExtra = buffer.readLine().toLowerCase();
+
+        ActividadesClubes nuevaActividad = null;
+
+        if (esExtra.equals("si")) {
+            nuevaActividad = new ActividadesExtraDeportivas();
+            System.out.print("Ingrese el tipo de actividad extra deportiva: ");
+            ((ActividadesExtraDeportivas) nuevaActividad).setTipoExtraDeportivo(buffer.readLine());
+        }
+
+        System.out.print("Ingrese el ID de la actividad: ");
+        nuevaActividad.setID(Integer.parseInt(buffer.readLine()));
+        System.out.print("Ingrese el nombre de la actividad: ");
+        nuevaActividad.setActividad(buffer.readLine());
+        System.out.print("Ingrese el horario de la actividad: ");
+        nuevaActividad.setHorario(buffer.readLine());
+        System.out.print("Ingrese la descripción de la actividad: ");
+        nuevaActividad.setDescripcion(buffer.readLine());
+        System.out.print("Ingrese el lugar de la actividad: ");
+        nuevaActividad.setLugar(buffer.readLine());
+
+        actividades.add(nuevaActividad);
+        System.out.println("Actividad agregada con éxito.");
+    }
 
 
     public static void editarActividad(ArrayList<ActividadesClubes> actividades, BufferedReader buffer) throws IOException, ActividadNoEncontradaException {

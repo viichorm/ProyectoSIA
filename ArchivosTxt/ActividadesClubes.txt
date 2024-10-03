@@ -22,28 +22,3 @@
 726310006|602|Tenis|1030|Práctica de tenis avanzado|Cancha 2
 157490014|1401|Fútbol|1700|Entrenamiento de fútbol infantil|Cancha 1
 157490014|1402|Basketball|1300|Partido de basketball masculino|Gimnasio 2
-1509|1231585|Asado|1900|Asado|Recinto Privado del equipo
-1509|12385834|Asadini|1900|Asadini|Recinto Privado del club|ExtraDeportiva
-423190002|301|Fútbol|1900|Entrenamiento de fútbol femenino|Cancha 3
-423190002|302|Natación|800|Clases de natación para adultos|Piscina
-516920004|401|Tenis|1100|Práctica de tenis avanzado|Cancha 4
-516920004|402|Basketball|1500|Entrenamiento de basketball juvenil|Gimnasio 2
-102940009|901|Fútbol|1830|Partido de fútbol masculino|Cancha 3
-102940009|902|Basketball|1400|Práctica de basketball femenino|Gimnasio 2
-135270012|1201|Basketball|1545|Práctica de basketball infantil|Gimnasio 1
-135270012|1202|Fútbol|1645|Partido amistoso de fútbol|Cancha 3
-619200005|501|Fútbol|1700|Entrenamiento de fútbol masculino|Cancha 5
-619200005|502|Tenis|900|Clases de tenis para niños|Cancha 1
-837420007|701|Basketball|1200|Entrenamiento de basketball femenino|Gimnasio 1
-837420007|702|Fútbol|1600|Partido amistoso de fútbol|Cancha 4
-124160011|1101|Basketball|1230|Partido amistoso de basketball masculino|Gimnasio 3
-124160011|1102|Fútbol|1715|Entrenamiento de fútbol juvenil|Cancha 2
-609100001|201|Tenis|1000|Práctica de tenis|Cancha 2
-948530008|801|Tenis|800|Entrenamiento de tenis juvenil|Cancha 1
-948530008|802|Natación|930|Clases de natación infantil|Piscina
-146380013|1301|Natación|1030|Clases de natación avanzada|Piscina
-146380013|1302|Tenis|1115|Entrenamiento de tenis para adultos|Cancha 4
-726310006|601|Natación|700|Clases de natación para adultos|Piscina
-726310006|602|Tenis|1030|Práctica de tenis avanzado|Cancha 2
-157490014|1401|Fútbol|1700|Entrenamiento de fútbol infantil|Cancha 1
-157490014|1402|Basketball|1300|Partido de basketball masculino|Gimnasio 2
