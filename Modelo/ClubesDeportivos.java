@@ -28,20 +28,28 @@ public class ClubesDeportivos{
         this.socios = new ArrayList<>();
     }
 
-    // Getters
-    public String getNombre(){return nombre;}
-    public String getDireccion(){return direccion;}
-    public int getidClub(){return idClub;}
-    public ArrayList<ActividadesClubes> getActividades(){return actividades;}
-    public ArrayList<String> getSocios(){return socios;}
+    // Métodos getters y setters
+    public int getidClub() { return idClub; }
+    public void setId(int idClub) { this.idClub = idClub; }
 
-    // Setters
-    public void setNombre(String nombre){this.nombre = nombre;}
-    public void setDireccion(String direccion){this.direccion = direccion;}
-    public void setId(int id){this.idClub = id;}
-    public void setActividades(ArrayList<ActividadesClubes> actividades) {this.actividades = actividades;}
-    public void setSocios(ArrayList<String> Socios){this.socios = Socios;}
+    public String getNombre() { return nombre; }
+    public void setNombre(String nombre) { this.nombre = nombre; }
 
+    public String getDireccion() { return direccion; }
+    public void setDireccion(String direccion) { this.direccion = direccion; }
+
+    public ArrayList<String> getSocios() { return socios; }
+    public void setSocios(ArrayList<String> socios) { this.socios = socios; }
+
+    public ArrayList<ActividadesClubes> getActividades() { return actividades; }
+    public void setActividades(ArrayList<ActividadesClubes> actividades) { this.actividades = actividades; }
+
+
+        // Método toString para mostrar la información básica del club
+        @Override
+        public String toString() {
+            return "ID Club: " + idClub + "\nNombre: " + nombre + "\nDirección: " + direccion;
+        }
 
     // Metodos adicionales.
 
@@ -119,21 +127,45 @@ public void convertirNombreAMayusculas() {
             System.out.print("Ingrese el ID del club: ");
             int idClub = Integer.parseInt(buffer.readLine());
     
-            // Verifica si el club ya existe.
+            // Verifica si el club ya existe
             if (clubes.containsKey(idClub)) {
                 throw new ClubYaExistenteException("El club con ID " + idClub + " ya existe.");
             }
     
-            ClubesDeportivos nuevoClub = new ClubesDeportivos(idClub, nombre, direccion);
-            clubes.put(idClub, nuevoClub);
-            GestorPersistencia.guardarClubes("ArchivosTxt/Clubes.txt", clubes);
-            System.out.println("Club agregado exitosamente.");
+            // Preguntar si el club es premium
+            System.out.print("¿Es un club premium? (s/n): ");
+            String esPremium = buffer.readLine();
     
+            // Crear el club
+            ClubesDeportivos nuevoClub;
+            if (esPremium.equalsIgnoreCase("s")) {
+                System.out.print("Ingrese los beneficios adicionales del club: ");
+                String beneficios = buffer.readLine();
+                nuevoClub = new ClubesPremium(idClub, nombre, direccion, beneficios);
+            } else {
+                nuevoClub = new ClubesDeportivos(idClub, nombre, direccion);
+            }
+    
+            // Agregar socios al club
+            System.out.println("Ingrese los nombres de los socios separados por comas (o presione Enter para omitir):");
+            String sociosInput = buffer.readLine();
+            if (!sociosInput.isEmpty()) {
+                String[] sociosArray = sociosInput.split(",");
+                for (String socio : sociosArray) {
+                    nuevoClub.getSocios().add(socio.trim());
+                }
+            }
+    
+            // Añadir el club a la lista
+            clubes.put(idClub, nuevoClub);
+    
+            // Guardar los clubes actualizados
+            GestorPersistencia.guardarClubes("ArchivosTxt/Clubes.txt", clubes);
+    
+            System.out.println("Club agregado exitosamente.");
         } catch (ClubYaExistenteException e) {
-            // Maneja la excepción sin cerrar el programa.
-            System.out.println(e.getMessage());  // Muestra el mensaje de la excepción.
+            System.out.println(e.getMessage());
             System.out.println("Volviendo al menú principal...");
-            // Aquí puedes hacer una llamada al método que muestra el menú principal o continuar el flujo deseado.
         }
     }
 

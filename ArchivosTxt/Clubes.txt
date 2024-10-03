@@ -1,4 +1,4 @@
-113050010|Club Deportivo La Florida|Av. Vicuña Mackenna 5500, La Florida, Santiago|Carlos Villarroel
+1509|CF Real Madrid|Madrid|Florentino Perez
 423190002|Club Deportivo La Reina|Av. Larraín 7000, La Reina, Santiago|Carlos Muñoz
 516920004|Club Deportivo Maipú|Av. Pajaritos 3200, Maipú, Región Metropolitana|Gustavo Rivera
 102940009|Club Deportivo Antofagasta|Calle Matta 600, Antofagasta, Región de Antofagasta|Patricio Araya
@@ -14,3 +14,4 @@
 12445|Club Deportivo Real Santiago FC|Calle Maipu 2237|Juan
 157490014|Club Atlético Punta Arenas|Calle Colón 2200, Punta Arenas, Magallanes|Alonso Rodríguez
 13567|FC Universidad Sausalito|Sausalito 123|Luis
+11999|Comite de arbitros (barcelona)|Barcelona|Bartomeu|Los Arbis

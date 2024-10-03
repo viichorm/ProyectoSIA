@@ -9,11 +9,23 @@ public class GestorPersistencia {
         BufferedWriter escritor = new BufferedWriter(new FileWriter(archivoClubes));
         
         for (ClubesDeportivos club : clubes.values()) {
-            // Formato: idClub,nombre,direccion,socios (separados por ';')
-            String lineaClub = club.getidClub() + "|" + club.getNombre() + "|" + club.getDireccion() + "|" + String.join("|", club.getSocios());
+            // Formato: idClub|nombre|direccion|socios separados por ';'|beneficios (si aplica)
+            String socios = String.join(";", club.getSocios());  // Socios separados por ';'
+            String lineaClub;
+
+            // Si es un club premium, agregamos beneficios al final
+            if (club instanceof ClubesPremium) {
+                ClubesPremium clubPremium = (ClubesPremium) club;
+                lineaClub = club.getidClub() + "|" + club.getNombre() + "|" + club.getDireccion() + "|" + socios + "|" + clubPremium.getBeneficiosAdicionales();
+            } else {
+                // Para un club regular, solo hasta los socios
+                lineaClub = club.getidClub() + "|" + club.getNombre() + "|" + club.getDireccion() + "|" + socios;
+            }
+
             escritor.write(lineaClub);
             escritor.newLine();
         }
+
         escritor.close();
     }
 

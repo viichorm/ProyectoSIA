@@ -4,6 +4,7 @@ import java.util.*;
 
 import Modelo.ActividadesClubes;
 import Modelo.ClubesDeportivos;
+import Modelo.ClubesPremium;
 
 
 
@@ -11,26 +12,6 @@ public class CargarArchivo {
 
     public static HashMap<Integer, ClubesDeportivos> cargarClubes(String fileName) throws IOException {
         HashMap<Integer, ClubesDeportivos> clubesMap = new HashMap<>();
-
-                // Datos hardcoded
-                ClubesDeportivos club1 = new ClubesDeportivos();
-                club1.setId(12445);
-                club1.setNombre("Club Deportivo Real Santiago FC");
-                club1.setDireccion("Calle Maipu 2237");
-                club1.setSocios(new ArrayList<>(Arrays.asList("Juan", "Pedro", "Ana")));
-                club1.setActividades(new ArrayList<>());
-        
-                ClubesDeportivos club2 = new ClubesDeportivos();
-                club2.setId(13567);
-                club2.setNombre("FC Universidad Sausalito");
-                club2.setDireccion("Sausalito 123");
-                club2.setSocios(new ArrayList<>(Arrays.asList("Luis", "Maria")));
-                club2.setActividades(new ArrayList<>());
-        
-                // Agregar clubes al mapa
-                clubesMap.put(club1.getidClub(), club1);
-                clubesMap.put(club2.getidClub(), club2);
-        
         BufferedReader br = new BufferedReader(new FileReader(fileName));
         String line;
 
@@ -39,24 +20,41 @@ public class CargarArchivo {
             int idClub = Integer.parseInt(datos[0]);
             String nombre = datos[1];
             String direccion = datos[2];
-            String miembrosString = datos[3];
-            String[] miembrosArray = miembrosString.split(",");
+            ArrayList<String> socios = new ArrayList<>(Arrays.asList(datos[3].split(",")));  // Socios separados por comas
+            
+            ClubesDeportivos club;
 
-            ClubesDeportivos club = new ClubesDeportivos();
-            club.setId(idClub);
-            club.setNombre(nombre);
-            club.setDireccion(direccion);
-            club.setActividades(new ArrayList<ActividadesClubes>());
-            club.setSocios(new ArrayList<String>());
-
-            for (String miembro : miembrosArray) {
-                club.getSocios().add(miembro);
+            // Verifica si es un club premium (con beneficios adicionales en la columna 4)
+            if (datos.length == 5) {
+                String beneficios = datos[4];  // Club premium
+                club = new ClubesPremium(idClub, nombre, direccion, beneficios);
+            } else {
+                club = new ClubesDeportivos(idClub, nombre, direccion);
             }
 
+            // Asignar socios al club
+            club.setSocios(socios);
+
+            // Añadir club al mapa
             clubesMap.put(idClub, club);
         }
         br.close();
         return clubesMap;
+    }
+
+    public static void guardarClubes(String fileName, HashMap<Integer, ClubesDeportivos> clubesMap) throws IOException {
+        BufferedWriter bw = new BufferedWriter(new FileWriter(fileName));
+        
+        for (ClubesDeportivos club : clubesMap.values()) {
+            String socios = String.join(",", club.getSocios());
+            if (club instanceof ClubesPremium) {
+                ClubesPremium clubPremium = (ClubesPremium) club;
+                bw.write(club.getidClub() + "|" + club.getNombre() + "|" + club.getDireccion() + "|" + socios + "|" + clubPremium.getBeneficiosAdicionales() + "\n");
+            } else {
+                bw.write(club.getidClub() + "|" + club.getNombre() + "|" + club.getDireccion() + "|" + socios + "\n");
+            }
+        }
+        bw.close();
     }
 
     public static void cargarActividades(String fileName, HashMap<Integer, ClubesDeportivos> clubesMap) throws IOException {
@@ -87,21 +85,36 @@ public class CargarArchivo {
         
         BufferedReader br = new BufferedReader(new FileReader(fileName));
         String line;
-
+    
         while ((line = br.readLine()) != null) {
-            
             String[] datos = line.split("\\|");
-            int idClub = Integer.parseInt(datos[0]);
-
-            if (clubesMap.containsKey(idClub)) {
-                ActividadesClubes actividad = new ActividadesClubes();
-                actividad.setActividad(datos[1]);
-                actividad.setDescripcion(datos[2]);
-                actividad.setID(Integer.parseInt(datos[3]));
-                actividad.setHorario(datos[4]);
-                actividad.setLugar(datos[5]);
-
-                clubesMap.get(idClub).getActividades().add(actividad);
+    
+            try {
+                // Validar que el primer dato es un número entero
+                int idClub = Integer.parseInt(datos[0]);
+    
+                if (clubesMap.containsKey(idClub)) {
+                    ActividadesClubes actividad = new ActividadesClubes();
+    
+                    // Asignar los datos a los campos de la actividad
+                    actividad.setHorario(datos[1]); // Horario en formato 24 horas
+                    actividad.setID(Integer.parseInt(datos[2])); // ID de la actividad
+                    actividad.setDescripcion(datos[3]); // Nombre o descripción de la actividad
+                    actividad.setActividad(datos[4]); // Tipo de actividad (Fútbol, Natación, etc.)
+                    actividad.setLugar(datos[5]); // Lugar donde se realiza la actividad
+    
+                    // Agregar la actividad al club correspondiente
+                    clubesMap.get(idClub).getActividades().add(actividad);
+                }
+    
+            } catch (NumberFormatException e) {
+                // Mostrar un mensaje de error indicando la línea problemática y la causa
+                System.err.println("Error al procesar la línea: " + line);
+                System.err.println("Causa: " + e.getMessage());
+            } catch (ArrayIndexOutOfBoundsException e) {
+                // Captura si hay menos elementos de los esperados en la línea
+                System.err.println("Error en formato de línea: " + line);
+                System.err.println("Causa: " + e.getMessage());
             }
         }
         br.close();
