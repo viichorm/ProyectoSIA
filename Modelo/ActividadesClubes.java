@@ -58,64 +58,32 @@ public void convertirActividadAMayusculas() {
     this.actividad = this.actividad.toUpperCase();
 }
 
-    //Establecer el ID de la actividad validando que sea positivo.
-    public void setID(int id, boolean validar)
-    {
-        if(validar && id <= 0)
-        {
-            throw new IllegalArgumentException("El ID de la actividad debe ser positivo.");
-        }
-        this.idActividad = id;
+public static void agregarActividad(ArrayList<ActividadesClubes> actividades, BufferedReader buffer) throws IOException {
+    System.out.print("¿Es una actividad extra deportiva? (si/no): ");
+    String esExtra = buffer.readLine().toLowerCase();
+
+    ActividadesClubes nuevaActividad = null;
+
+    if (esExtra.equals("si")) {
+        nuevaActividad = new ActividadesExtraDeportivas();
+        System.out.print("Ingrese el tipo de actividad extra deportiva: ");
+        ((ActividadesExtraDeportivas) nuevaActividad).setTipoExtraDeportivo(buffer.readLine());
     }
 
-    //Establecer el nombre de la actividad en mayusculas si se desea.
-    public void setActividad(String actividad, boolean mayuscula)
-    {
-        if(mayuscula)
-        {
-            this.actividad = actividad.toUpperCase();
-        }
-        else{
-            this.actividad = actividad;
-        }
-    }
+    System.out.print("Ingrese el ID de la actividad: ");
+    nuevaActividad.setID(Integer.parseInt(buffer.readLine()));
+    System.out.print("Ingrese el nombre de la actividad: ");
+    nuevaActividad.setActividad(buffer.readLine());
+    System.out.print("Ingrese el horario de la actividad: ");
+    nuevaActividad.setHorario(buffer.readLine());
+    System.out.print("Ingrese la descripción de la actividad: ");
+    nuevaActividad.setDescripcion(buffer.readLine());
+    System.out.print("Ingrese el lugar de la actividad: ");
+    nuevaActividad.setLugar(buffer.readLine());
 
-    //Establecer el lugar de la actividad añadiendo su numero de sala.
-    public void setLugar(String lugar, int sala)
-    {
-        if(sala <= 0){
-            throw new IllegalArgumentException("El número de la sala debe ser positivo");
-        }
-        this.lugar = lugar + " - Sala número" + sala;
-    }
-
-    //Establecer la descripcion en mayusculas si se desea.
-    public void setDescripcion(String descripcion, boolean mayus)
-    {
-        if(mayus)
-        {
-            this.descripcion = descripcion.toUpperCase();
-        }
-        else{
-            this.descripcion = descripcion;
-        }
-    }
-
-    public static void agregarActividad(ArrayList<ActividadesClubes> actividades, BufferedReader buffer) throws IOException {
-        ActividadesClubes nuevaActividad = new ActividadesClubes();
-        System.out.print("Ingrese el ID de la actividad: ");
-        nuevaActividad.setID(Integer.parseInt(buffer.readLine()));
-        System.out.print("Ingrese el nombre de la actividad: ");
-        nuevaActividad.setActividad(buffer.readLine());
-        System.out.print("Ingrese el horario de la actividad: ");
-        nuevaActividad.setHorario(buffer.readLine());
-        System.out.print("Ingrese la descripción de la actividad: ");
-        nuevaActividad.setDescripcion(buffer.readLine());
-        System.out.print("Ingrese el lugar de la actividad: ");
-        nuevaActividad.setLugar(buffer.readLine());
-        actividades.add(nuevaActividad);
-        System.out.println("Actividad agregada con éxito.");
-    }
+    actividades.add(nuevaActividad);
+    System.out.println("Actividad agregada con éxito.");
+}
 
 
     public static void editarActividad(ArrayList<ActividadesClubes> actividades, BufferedReader buffer) throws IOException, ActividadNoEncontradaException {

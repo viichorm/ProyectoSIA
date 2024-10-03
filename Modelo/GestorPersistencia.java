@@ -31,13 +31,19 @@ public class GestorPersistencia {
 
     // Método para guardar las actividades de cada club en un archivo
     public static void guardarActividades(String archivoActividades, HashMap<Integer, ClubesDeportivos> clubes) throws IOException {
-        BufferedWriter escritor = new BufferedWriter(new FileWriter(archivoActividades));
-
+        BufferedWriter escritor = new BufferedWriter(new FileWriter(archivoActividades, true)); // Modo append (true)
+    
         for (ClubesDeportivos club : clubes.values()) {
             for (ActividadesClubes actividad : club.getActividades()) {
-                // Formato: idClub,idActividad,nombre,horario,descripcion,lugar
+                // Formato básico: idClub|idActividad|nombre|horario|descripcion|lugar
                 String lineaActividad = club.getidClub() + "|" + actividad.getidActividad() + "|" + actividad.getActividad() + "|" +
                         actividad.getHorario() + "|" + actividad.getDescripcion() + "|" + actividad.getLugar();
+                
+                // Si es una actividad extra deportiva, agregar el separador adicional y la etiqueta
+                if (actividad instanceof ActividadesExtraDeportivas) {
+                    lineaActividad += "|ExtraDeportiva";
+                }
+    
                 escritor.write(lineaActividad);
                 escritor.newLine();
             }
