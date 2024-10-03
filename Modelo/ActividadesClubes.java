@@ -21,35 +21,13 @@ public class ActividadesClubes{
         this.lugar = "";
     }
 
-    //Constructor con tres parametros basicos. (Id, actividad,horario)
-    public ActividadesClubes(int idActividad, String actividad, String horario)
-    {
+    // Constructor único con los parámetros obligatorios.
+
+    public ActividadesClubes(int idActividad, String actividad, String horario) {
         this.idActividad = idActividad;
         this.actividad = actividad;
         this.horario = horario;
-        this.descripcion = "";
-        this.lugar = "";
     }
-
-    //Constructor con todos los parametros.
-    public ActividadesClubes(int idActividad, String actividad, String horario, String descripcion, String lugar)
-    {
-        this.idActividad = idActividad;
-        this.actividad = actividad;
-        this.horario = horario;
-        this.descripcion = descripcion;
-        this.lugar = lugar;
-    }
-
-    //Constructor que copia datos de una actividad ya existente.
-    public ActividadesClubes(ActividadesClubes actividad)
-    {
-        this.idActividad = actividad.idActividad;
-        this.actividad = actividad.actividad;
-        this.descripcion = actividad.descripcion;
-        this.lugar = actividad.lugar;
-        this.horario = actividad.horario;
-    } 
 
     //Getters
     public String getActividad() {return actividad;}
@@ -66,6 +44,19 @@ public class ActividadesClubes{
     public void setLugar(String lugar) {this.lugar = lugar;}
 
     //Metodos adicionales.
+
+    public void agregarDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+    
+    public void agregarLugar(String lugar) {
+        this.lugar = lugar;
+    }
+
+    // Método adicional para convertir la actividad a mayúsculas.
+public void convertirActividadAMayusculas() {
+    this.actividad = this.actividad.toUpperCase();
+}
 
     //Establecer el ID de la actividad validando que sea positivo.
     public void setID(int id, boolean validar)

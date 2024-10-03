@@ -20,35 +20,12 @@ public class ClubesDeportivos{
         this.socios = new ArrayList<>();
     }
 
-    // Constructor con parametros basicos (idClub, nombre, direccion)
-    public ClubesDeportivos(int idClub, String nombre, String direccion)
-    {
+    public ClubesDeportivos(int idClub, String nombre, String direccion) {
         this.idClub = idClub;
         this.nombre = nombre;
         this.direccion = direccion;
         this.actividades = new ArrayList<>();
         this.socios = new ArrayList<>();
-    }
-
-    // Constructor con todos los parametros.
-    public ClubesDeportivos(int idClub, String nombre, String direccion, ArrayList<ActividadesClubes> actvidades, ArrayList<String> socios)
-    {
-        this.idClub = idClub;
-        this.nombre = nombre;
-        this.direccion = direccion;
-        this.actividades = actvidades;
-        this.socios = socios;
-
-    }
-
-    // Constructor que copia datos ya de un club ya existente.
-    public ClubesDeportivos(ClubesDeportivos club)
-    {
-        this.idClub = club.idClub;
-        this.nombre = club.nombre;
-        this.direccion = club.direccion;
-        this.actividades = new ArrayList<>(club.actividades);
-        this.socios = new ArrayList<>(club.socios);
     }
 
     // Getters
@@ -67,6 +44,21 @@ public class ClubesDeportivos{
 
 
     // Metodos adicionales.
+
+    
+public void agregarActividades(ArrayList<ActividadesClubes> actividades) {
+    this.actividades = actividades;
+}
+
+public void agregarSocios(ArrayList<String> socios) {
+    this.socios = socios;
+}
+
+// Método adicional para convertir el nombre a mayúsculas.
+public void convertirNombreAMayusculas() {
+    this.nombre = this.nombre.toUpperCase();
+}
+
 
     // Establecer el Id del club validando que sea positivo.
     public void setId(int id, boolean validar)
