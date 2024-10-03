@@ -2,6 +2,7 @@ package Modelo;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.*;
+import Excepciones.ClubYaExistenteException;
 public class ClubesDeportivos{
     private int idClub; //identificador del club
     private String nombre; //nombre del club
@@ -117,24 +118,31 @@ public class ClubesDeportivos{
     //Metodos para la gestión de clubes.
 
     public static void agregarClub(HashMap<Integer, ClubesDeportivos> clubes, BufferedReader buffer) throws IOException {
-        System.out.println("Agregar nuevo club:");
-        System.out.print("Ingrese el nombre del club: ");
-        String nombre = buffer.readLine();
-        System.out.print("Ingrese la dirección del club: ");
-        String direccion = buffer.readLine();
-        System.out.print("Ingrese el ID del club: ");
-        int idClub = Integer.parseInt(buffer.readLine());
-
-        ClubesDeportivos nuevoClub = new ClubesDeportivos();
-        nuevoClub.setNombre(nombre);
-        nuevoClub.setDireccion(direccion);
-        nuevoClub.setId(idClub);
-        nuevoClub.setActividades(new ArrayList<>());
-        nuevoClub.setSocios(new ArrayList<>());
-
-        clubes.put(idClub, nuevoClub);
-        GestorPersistencia.guardarClubes("ArchivosTxt/Clubes.txt", clubes);
-        System.out.println("Club agregado exitosamente.");
+        try {
+            System.out.println("Agregar nuevo club:");
+            System.out.print("Ingrese el nombre del club: ");
+            String nombre = buffer.readLine();
+            System.out.print("Ingrese la dirección del club: ");
+            String direccion = buffer.readLine();
+            System.out.print("Ingrese el ID del club: ");
+            int idClub = Integer.parseInt(buffer.readLine());
+    
+            // Verifica si el club ya existe.
+            if (clubes.containsKey(idClub)) {
+                throw new ClubYaExistenteException("El club con ID " + idClub + " ya existe.");
+            }
+    
+            ClubesDeportivos nuevoClub = new ClubesDeportivos(idClub, nombre, direccion);
+            clubes.put(idClub, nuevoClub);
+            GestorPersistencia.guardarClubes("ArchivosTxt/Clubes.txt", clubes);
+            System.out.println("Club agregado exitosamente.");
+    
+        } catch (ClubYaExistenteException e) {
+            // Maneja la excepción sin cerrar el programa.
+            System.out.println(e.getMessage());  // Muestra el mensaje de la excepción.
+            System.out.println("Volviendo al menú principal...");
+            // Aquí puedes hacer una llamada al método que muestra el menú principal o continuar el flujo deseado.
+        }
     }
 
     public static void editarClub(HashMap<Integer, ClubesDeportivos> clubes, BufferedReader buffer) throws IOException {

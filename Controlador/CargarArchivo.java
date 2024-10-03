@@ -89,6 +89,7 @@ public class CargarArchivo {
         String line;
 
         while ((line = br.readLine()) != null) {
+            
             String[] datos = line.split("\\|");
             int idClub = Integer.parseInt(datos[0]);
 

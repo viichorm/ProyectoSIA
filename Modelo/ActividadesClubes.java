@@ -2,6 +2,7 @@ package Modelo;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.*;
+import Excepciones.ActividadNoEncontradaException;
 
 public class ActividadesClubes{
     private int idActividad; //Identificador de la actividad.
@@ -126,10 +127,10 @@ public class ActividadesClubes{
     }
 
 
-    public static void editarActividad(ArrayList<ActividadesClubes> actividades, BufferedReader buffer) throws IOException {
+    public static void editarActividad(ArrayList<ActividadesClubes> actividades, BufferedReader buffer) throws IOException, ActividadNoEncontradaException {
         System.out.print("Ingrese el ID de la actividad a editar: ");
         int idActividad = Integer.parseInt(buffer.readLine());
-
+    
         for (ActividadesClubes actividad : actividades) {
             if (actividad.getidActividad() == idActividad) {
                 System.out.print("Ingrese el nuevo nombre de la actividad: ");
@@ -144,7 +145,7 @@ public class ActividadesClubes{
                 return;
             }
         }
-        System.out.println("Actividad no encontrada.");
+        throw new ActividadNoEncontradaException("La actividad con ID " + idActividad + " no fue encontrada.");
     }
 
     public static void eliminarActividad(ArrayList<ActividadesClubes> actividades, BufferedReader buffer) throws IOException {

@@ -1,25 +1,25 @@
-113050010|1001|Tenis|07:30|Clases de tenis para adultos|Cancha 5
-113050010|1002|Natación|08:45|Entrenamiento de natación avanzado|Piscina
-423190002|301|Fútbol|19:00|Entrenamiento de fútbol femenino|Cancha 3
-423190002|302|Natación|08:00|Clases de natación para adultos|Piscina
-516920004|401|Tenis|11:00|Práctica de tenis avanzado|Cancha 4
-516920004|402|Basketball|15:00|Entrenamiento de basketball juvenil|Gimnasio 2
-102940009|901|Fútbol|18:30|Partido de fútbol masculino|Cancha 3
-102940009|902|Basketball|14:00|Práctica de basketball femenino|Gimnasio 2
-135270012|1201|Basketball|15:45|Práctica de basketball infantil|Gimnasio 1
-135270012|1202|Fútbol|16:45|Partido amistoso de fútbol|Cancha 3
-619200005|501|Fútbol|17:00|Entrenamiento de fútbol masculino|Cancha 5
-619200005|502|Tenis|09:00|Clases de tenis para niños|Cancha 1
-837420007|701|Basketball|12:00|Entrenamiento de basketball femenino|Gimnasio 1
-837420007|702|Fútbol|16:00|Partido amistoso de fútbol|Cancha 4
-124160011|1101|Basketball|12:30|Partido amistoso de basketball masculino|Gimnasio 3
-124160011|1102|Fútbol|17:15|Entrenamiento de fútbol juvenil|Cancha 2
-609100001|201|Tenis|10:00|Práctica de tenis|Cancha 2
-948530008|801|Tenis|08:00|Entrenamiento de tenis juvenil|Cancha 1
-948530008|802|Natación|09:30|Clases de natación infantil|Piscina
-146380013|1301|Natación|10:30|Clases de natación avanzada|Piscina
-146380013|1302|Tenis|11:15|Entrenamiento de tenis para adultos|Cancha 4
-726310006|601|Natación|07:00|Clases de natación para adultos|Piscina
-726310006|602|Tenis|10:30|Práctica de tenis avanzado|Cancha 2
-157490014|1401|Fútbol|17:00|Entrenamiento de fútbol infantil|Cancha 1
-157490014|1402|Basketball|13:00|Partido de basketball masculino|Gimnasio 2
+113050010|1001|Tenis|0730|Clases de tenis para adultos|Cancha 5
+113050010|1002|Natación|0845|Entrenamiento de natación avanzado|Piscina
+423190002|301|Fútbol|1900|Entrenamiento de fútbol femenino|Cancha 3
+423190002|302|Natación|0800|Clases de natación para adultos|Piscina
+516920004|401|Tenis|1100|Práctica de tenis avanzado|Cancha 4
+516920004|402|Basketball|1500|Entrenamiento de basketball juvenil|Gimnasio 2
+102940009|901|Fútbol|1830|Partido de fútbol masculino|Cancha 3
+102940009|902|Basketball|1400|Práctica de basketball femenino|Gimnasio 2
+135270012|1201|Basketball|1545|Práctica de basketball infantil|Gimnasio 1
+135270012|1202|Fútbol|1645|Partido amistoso de fútbol|Cancha 3
+619200005|501|Fútbol|1700|Entrenamiento de fútbol masculino|Cancha 5
+619200005|502|Tenis|0900|Clases de tenis para niños|Cancha 1
+837420007|701|Basketball|1200|Entrenamiento de basketball femenino|Gimnasio 1
+837420007|702|Fútbol|1600|Partido amistoso de fútbol|Cancha 4
+124160011|1101|Basketball|1230|Partido amistoso de basketball masculino|Gimnasio 3
+124160011|1102|Fútbol|1715|Entrenamiento de fútbol juvenil|Cancha 2
+609100001|201|Tenis|1000|Práctica de tenis|Cancha 2
+948530008|801|Tenis|0800|Entrenamiento de tenis juvenil|Cancha 1
+948530008|802|Natación|0930|Clases de natación infantil|Piscina
+146380013|1301|Natación|1030|Clases de natación avanzada|Piscina
+146380013|1302|Tenis|1115|Entrenamiento de tenis para adultos|Cancha 4
+726310006|601|Natación|0700|Clases de natación para adultos|Piscina
+726310006|602|Tenis|1030|Práctica de tenis avanzado|Cancha 2
+157490014|1401|Fútbol|1700|Entrenamiento de fútbol infantil|Cancha 1
+157490014|1402|Basketball|1300|Partido de basketball masculino|Gimnasio 2

@@ -1,16 +1,16 @@
-113050010|Club Deportivo La Florida|Av. Vicuña Mackenna 5500, La Florida, Santiago|Carlos Villarroel|Isabel Castillo
-423190002|Club Deportivo La Reina|Av. Larraín 7000, La Reina, Santiago|Carlos Muñoz|Sebastián Castro
-516920004|Club Deportivo Maipú|Av. Pajaritos 3200, Maipú, Región Metropolitana|Gustavo Rivera|Pedro Salas
-102940009|Club Deportivo Antofagasta|Calle Matta 600, Antofagasta, Región de Antofagasta|Patricio Araya|Laura Morales
-135270012|Club Deportivo Ñuñoa|Av. Irarrázaval 1800, Ñuñoa, Santiago|Javier Ramírez|Mónica Fuentes
-619200005|Club Deportivo Viña del Mar|Av. Libertad 123, Viña del Mar, Valparaíso|María Gómez|Jorge Salinas
-837420007|Club Deportivo San Miguel|Av. Lo Ovalle 1500, San Miguel, Santiago|Felipe López|Andrea Ruiz
-124160011|Club Deportivo Quilicura|Av. Lo Cruzat 2000, Quilicura, Santiago|Ignacio Soto|Natalia Díaz
-609100001|Club Universidad de Chile|Av. Grecia 2001, Ñuñoa, Santiago, Chile |Azul Azul S.A|Michael Clark
-948530008|Club Social y Deportivo Concepción|Calle Independencia 750, Concepción, Biobío|Martín Núñez|Valentina Muñoz
-146380013|Club Deportivo Rancagua|Av. República 300, Rancagua, O'Higgins|Diego Figueroa|Ana Vargas
+113050010|Club Deportivo La Florida|Av. Vicuña Mackenna 5500, La Florida, Santiago|Carlos Villarroel
+423190002|Club Deportivo La Reina|Av. Larraín 7000, La Reina, Santiago|Carlos Muñoz
+516920004|Club Deportivo Maipú|Av. Pajaritos 3200, Maipú, Región Metropolitana|Gustavo Rivera
+102940009|Club Deportivo Antofagasta|Calle Matta 600, Antofagasta, Región de Antofagasta|Patricio Araya
+135270012|Club Deportivo Ñuñoa|Av. Irarrázaval 1800, Ñuñoa, Santiago|Javier Ramírez
+619200005|Club Deportivo Viña del Mar|Av. Libertad 123, Viña del Mar, Valparaíso|María Gómez
+837420007|Club Deportivo San Miguel|Av. Lo Ovalle 1500, San Miguel, Santiago|Felipe López
+124160011|Club Deportivo Quilicura|Av. Lo Cruzat 2000, Quilicura, Santiago|Ignacio Soto
+609100001|Club Universidad de Chile|Av. Grecia 2001, Ñuñoa, Santiago, Chile |Azul Azul S.A
+948530008|Club Social y Deportivo Concepción|Calle Independencia 750, Concepción, Biobío|Martín Núñez
+146380013|Club Deportivo Rancagua|Av. República 300, Rancagua, O'Higgins|Diego Figueroa
 995690209|CLUB DEPORTIVO PALESTINO SADP|AV EL PARRON 0999, Región Metropolitana, Santiago|Jorge Uauy
-726310006|Club Atlético Providencia|Av. Providencia 4000, Providencia, Santiago|Rodrigo Méndez|Sofía Pino
-12445|Club Deportivo Real Santiago FC|Calle Maipu 2237|Juan|Pedro|Ana
-157490014|Club Atlético Punta Arenas|Calle Colón 2200, Punta Arenas, Magallanes|Alonso Rodríguez|Sofía Orellana
-13567|FC Universidad Sausalito|Sausalito 123|Luis|Maria
+726310006|Club Atlético Providencia|Av. Providencia 4000, Providencia, Santiago|Rodrigo Méndez
+12445|Club Deportivo Real Santiago FC|Calle Maipu 2237|Juan
+157490014|Club Atlético Punta Arenas|Calle Colón 2200, Punta Arenas, Magallanes|Alonso Rodríguez
+13567|FC Universidad Sausalito|Sausalito 123|Luis
