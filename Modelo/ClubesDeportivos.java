@@ -217,6 +217,17 @@ public void convertirNombreAMayusculas() {
             System.out.println("El club con ID " + idClub + " no existe.");
         }
     }
+    // FUNCION PARA MOSTRAR LOS DATOS DE UN CLUB
+    public static String mostrarDatosClub(ClubesDeportivos club) {
+        StringBuilder datos = new StringBuilder();
+        datos.append("Datos del club:\n");
+        datos.append("ID: " + club.getidClub() + "\n");
+        datos.append("Nombre: " + club.getNombre() + "\n");
+        datos.append("Dirección: " + club.getDireccion() + "\n");
+        datos.append("Actividades: " + club.getActividades() + "\n");
+        datos.append("Socios: " + club.getSocios() + "\n");
+        return datos.toString();
+    }
     
 }
 
