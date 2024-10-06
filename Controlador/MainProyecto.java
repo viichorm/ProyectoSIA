@@ -6,7 +6,8 @@ import Excepciones.ActividadNoEncontradaException;
 import Excepciones.ClubYaExistenteException;
 import Excepciones.EntradaInvalidaException;
 import Modelo.ClubesDeportivos;
-import Vistaa.MenuPrincipal;
+import Vistaa.SeleccionarModo;
+
 public class MainProyecto {
     public static void main(String[] args) throws EntradaInvalidaException, ClubYaExistenteException, ActividadNoEncontradaException {
         try {
@@ -16,11 +17,9 @@ public class MainProyecto {
             // Cargar actividades y asociarlas a los clubes desde el archivo "Actividades.txt"
             CargarArchivo.cargarActividades("ArchivosTxt/ActividadesClubes.txt", clubes);
             
-            
-            MenuPrincipal menuVentana = new MenuPrincipal();
-            menuVentana.setVisible(true);  // Mostrar la ventana
-            // Mostrar el menú principal
-            //MenusConsola.mostrarMenuPrincipal(clubes);
+            // Mostrar la ventana de selección de modo (consola o ventana gráfica)
+            SeleccionarModo seleccionModo = new SeleccionarModo(clubes);
+            seleccionModo.setVisible(true);  // Mostrar la ventana de selección
 
         } catch (IOException e) {
             System.out.println("Error al cargar los archivos: " + e.getMessage());

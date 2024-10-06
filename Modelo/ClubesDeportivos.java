@@ -3,6 +3,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.*;
 import Excepciones.ClubYaExistenteException;
+//import Modelo.ActividadesClubes;
+
 public class ClubesDeportivos{
     private int idClub; //identificador del club
     private String nombre; //nombre del club
@@ -228,6 +230,123 @@ public void convertirNombreAMayusculas() {
         datos.append("Socios: " + club.getSocios() + "\n");
         return datos.toString();
     }
+
+
+    public static void agregarClubConsola(HashMap<Integer, ClubesDeportivos> clubes, BufferedReader buffer) throws IOException {
+        try {
+            System.out.println("Agregar nuevo club:");
+            System.out.print("Ingrese el nombre del club: ");
+            String nombre = buffer.readLine();
+            System.out.print("Ingrese la dirección del club: ");
+            String direccion = buffer.readLine();
+            System.out.print("Ingrese el ID del club: ");
+            int idClub = Integer.parseInt(buffer.readLine());
+    
+            // Verifica si el club ya existe
+            if (clubes.containsKey(idClub)) {
+                throw new ClubYaExistenteException("El club con ID " + idClub + " ya existe.");
+            }
+    
+            // Preguntar si el club es premium
+            System.out.print("¿Es un club premium? (s/n): ");
+            String esPremium = buffer.readLine();
+    
+            // Crear el club
+            ClubesDeportivos nuevoClub;
+            if (esPremium.equalsIgnoreCase("s")) {
+                System.out.print("Ingrese los beneficios adicionales del club: ");
+                String beneficios = buffer.readLine();
+                nuevoClub = new ClubesPremium(idClub, nombre, direccion, beneficios);
+            } else {
+                nuevoClub = new ClubesDeportivos(idClub, nombre, direccion);
+            }
+    
+            // Agregar socios al club
+            System.out.println("Ingrese los nombres de los socios separados por comas (o presione Enter para omitir):");
+            String sociosInput = buffer.readLine();
+            if (!sociosInput.isEmpty()) {
+                String[] sociosArray = sociosInput.split(",");
+                for (String socio : sociosArray) {
+                    nuevoClub.getSocios().add(socio.trim());
+                }
+            }
+    
+            // Añadir el club a la lista
+            clubes.put(idClub, nuevoClub);
+    
+            // Guardar los clubes actualizados
+            GestorPersistencia.guardarClubes("ArchivosTxt/Clubes.txt", clubes);
+    
+            System.out.println("Club agregado exitosamente.");
+        } catch (ClubYaExistenteException e) {
+            System.out.println(e.getMessage());
+            System.out.println("Volviendo al menú principal...");
+        }
+    }
+
+    // Método para editar un club desde el menú de consola
+    public static void editarClubConsola(HashMap<Integer, ClubesDeportivos> clubes, BufferedReader buffer) throws IOException {
+        System.out.print("Ingrese el ID del club a editar: ");
+        int idClub = Integer.parseInt(buffer.readLine());
+
+        if (clubes.containsKey(idClub)) {
+            ClubesDeportivos club = clubes.get(idClub);
+
+            System.out.print("Ingrese el nuevo nombre del club (actual: " + club.getNombre() + "): ");
+            String nuevoNombre = buffer.readLine();
+            if (!nuevoNombre.isEmpty()) {
+                club.setNombre(nuevoNombre);
+            }
+
+            System.out.print("Ingrese la nueva dirección del club (actual: " + club.getDireccion() + "): ");
+            String nuevaDireccion = buffer.readLine();
+            if (!nuevaDireccion.isEmpty()) {
+                club.setDireccion(nuevaDireccion);
+            }
+            GestorPersistencia.guardarClubes("ArchivosTxt/Clubes.txt", clubes);
+            System.out.println("Club editado exitosamente.");
+        } else {
+            System.out.println("El club con ID " + idClub + " no existe.");
+        }
+    }
+
+    // Método para eliminar un club desde el menú de consola
+    public static void eliminarClubConsola(HashMap<Integer, ClubesDeportivos> clubes, BufferedReader buffer) throws IOException {
+        System.out.print("Ingrese el ID del club a eliminar: ");
+        int idClub = Integer.parseInt(buffer.readLine());
+    
+        // Verifica si el club existe
+        if (clubes.containsKey(idClub)) {
+            // Obtén la instancia del club
+            ClubesDeportivos clubSeleccionado = clubes.get(idClub);
+            
+            // Elimina todas las actividades asociadas antes de eliminar el club
+            ArrayList<ActividadesClubes> actividades = clubSeleccionado.getActividades();
+            if (!actividades.isEmpty()) {
+                ActividadesClubes.eliminarActividad(actividades); // Llama al método para eliminar actividades
+            }
+    
+            // Elimina el club
+            clubes.remove(idClub);
+            GestorPersistencia.guardarClubes("ArchivosTxt/Clubes.txt", clubes);
+            System.out.println("Club eliminado exitosamente.");
+        } else {
+            System.out.println("El club con ID " + idClub + " no existe.");
+        }
+    }
+
+    // FUNCION PARA MOSTRAR LOS DATOS DE UN CLUB
+    public static String mostrarDatosClubConsola(ClubesDeportivos club) {
+        StringBuilder datos = new StringBuilder();
+        datos.append("Datos del club:\n");
+        datos.append("ID: " + club.getidClub() + "\n");
+        datos.append("Nombre: " + club.getNombre() + "\n");
+        datos.append("Dirección: " + club.getDireccion() + "\n");
+        datos.append("Actividades: " + club.getActividades() + "\n");
+        datos.append("Socios: " + club.getSocios() + "\n");
+        return datos.toString();
+    }
+
     
 }
 
